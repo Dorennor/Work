@@ -13,6 +13,10 @@ public class TransportTicket
     public DateTime DateTime { get; set; }
 
     [Required]
+    [Column("NumberOfUsing")]
+    public int NumberOfUsing { get; set; }
+
+    [Required]
     [Column("Transport")]
     public int TransportId { get; set; }
 
@@ -20,6 +24,6 @@ public class TransportTicket
     public Transport Transport { get; set; }
 
     [Required]
-    [Column("Price")]
-    public double Price { get; set; }
+    [Column("TransportPrice")]
+    public double TransportPrice { get; set; }
 }

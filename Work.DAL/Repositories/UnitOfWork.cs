@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Work.DAL.Data;
 using Work.DAL.Entities;
 using Work.DAL.Interfaces;
@@ -11,16 +12,16 @@ public class UnitOfWork : IUnitOfWork
     private readonly TourDbContext _context;
 
     public IRepository<Tour> _tours;
-    public IRepository<User> _users;
+    public IRepository<IdentityUser<int>> _users;
     public IRepository<Order> _orders;
     public IRepository<HotelTicket> _hotelTickets;
     public IRepository<Hotel> _hotels;
     public IRepository<TransportTicket> _transportTickets;
     public IRepository<Transport> _transports;
 
-    public UnitOfWork(DbContextOptions<TourDbContext> options)
+    public UnitOfWork()
     {
-        _context = new TourDbContext(options);
+        _context = new TourDbContext();
     }
 
     public IRepository<Tour> Tours
@@ -33,7 +34,7 @@ public class UnitOfWork : IUnitOfWork
         set => _tours = value;
     }
 
-    public IRepository<User> Users
+    public IRepository<IdentityUser<int>> Users
     {
         get
         {

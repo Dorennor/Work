@@ -4,17 +4,15 @@ public class TourModel
 {
     public int Id { get; set; }
 
-    public string Name { get; set; }
+    public string TourName { get; set; }
 
-    public string Type { get; set; }
+    public string TourType { get; set; }
 
-    public string Region { get; set; }
+    public string TourRegion { get; set; }
 
-    public string MovementType { get; set; }
+    public string TourMovementType { get; set; }
 
-    public DateOnly TourDate { get; set; }
+    public DateTime TourDateTime { get; set; }
 
-    public double Price { get; set; }
-
-    public int TourDuration { get; set; }
+    public int TourDurationInDays { get; set; }
 }

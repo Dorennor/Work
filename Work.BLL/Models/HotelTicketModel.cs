@@ -1,14 +1,16 @@
-﻿using Work.DAL.Entities;
-
-namespace Work.BLL.Models;
+﻿namespace Work.BLL.Models;
 
 public class HotelTicketModel
 {
     public int Id { get; set; }
 
-    public DateOnly Date { get; set; }
+    public DateTime DateTime { get; set; }
+
+    public int NumberOfDays { get; set; }
+
+    public int HotelId { get; set; }
 
     public HotelModel Hotel { get; set; }
 
-    public double Price { get; set; }
+    public double SummaryPrice { get; set; }
 }

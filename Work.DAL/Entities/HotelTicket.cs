@@ -13,6 +13,10 @@ public class HotelTicket
     public DateTime DateTime { get; set; }
 
     [Required]
+    [Column("NumberOfDays")]
+    public int NumberOfDays { get; set; }
+
+    [Required]
     [Column("Hotel")]
     public int HotelId { get; set; }
 
@@ -20,6 +24,6 @@ public class HotelTicket
     public Hotel Hotel { get; set; }
 
     [Required]
-    [Column("Price")]
-    public double Price { get; set; }
+    [Column("SummaryPrice")]
+    public double SummaryPrice { get; set; }
 }

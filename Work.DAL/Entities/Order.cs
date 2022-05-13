@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace Work.DAL.Entities;
 
@@ -15,12 +16,12 @@ public class Order
     [ForeignKey("TourId")]
     public Tour Tour { get; set; }
 
-    //[Required]
-    //[Column("User")]
-    //public int UserId { get; set; }
+    [Required]
+    [Column("User")]
+    public int UserId { get; set; }
 
-    //[ForeignKey("UserId")]
-    //public User User { get; set; }
+    [ForeignKey("UserId")]
+    public IdentityUser<int> User { get; set; }
 
     [Column("HotelReservationTicket")]
     public int? HotelTicketReservationId { get; set; }

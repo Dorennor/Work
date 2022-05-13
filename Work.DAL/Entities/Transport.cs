@@ -13,6 +13,6 @@ public class Transport
     public string Name { get; set; }
 
     [Required]
-    [Column("Price")]
-    public double Price { get; set; }
+    [Column("TransportPrice")]
+    public double TransportPrice { get; set; }
 }

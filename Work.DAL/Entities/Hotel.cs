@@ -13,10 +13,10 @@ public class Hotel
     public string HotelName { get; set; }
 
     [Required]
-    [Column("Stars")]
+    [Column("HotelStars")]
     public int HotelStars { get; set; }
 
     [Required]
-    [Column("Price")]
-    public double Price { get; set; }
+    [Column("HotelPrice")]
+    public double HotelPrice { get; set; }
 }

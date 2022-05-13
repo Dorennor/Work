@@ -6,5 +6,5 @@ public class TransportModel
 
     public string Name { get; set; }
 
-    public double Price { get; set; }
+    public double TransportPrice { get; set; }
 }

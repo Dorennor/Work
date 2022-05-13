@@ -14,6 +14,7 @@ namespace Work.PL
                 .WriteTo.Console(theme: AnsiConsoleTheme.Code)
                 .WriteTo.File("logs/log.log", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
+
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();

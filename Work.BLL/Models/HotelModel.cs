@@ -8,5 +8,5 @@ public class HotelModel
 
     public int HotelStars { get; set; }
 
-    public double Price { get; set; }
+    public double HotelPrice { get; set; }
 }

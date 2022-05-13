@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Work.DAL.Data;
-using Work.DAL.Entities;
 using Work.DAL.Interfaces;
 
 namespace Work.DAL.Repositories;
 
-public class UsersRepository : IRepository<User>
+public class UsersRepository : IRepository<IdentityUser<int>>
 {
     private readonly TourDbContext _context;
 
@@ -14,7 +14,7 @@ public class UsersRepository : IRepository<User>
         _context = context;
     }
 
-    public async Task<IEnumerable<User>> GetAllAsync()
+    public async Task<IEnumerable<IdentityUser<int>>> GetAllAsync()
     {
         try
         {
@@ -28,7 +28,7 @@ public class UsersRepository : IRepository<User>
         }
     }
 
-    public async Task<User> GetByIdAsync(int id)
+    public async Task<IdentityUser<int>> GetByIdAsync(int id)
     {
         try
         {
@@ -49,7 +49,7 @@ public class UsersRepository : IRepository<User>
         }
     }
 
-    public async Task<IEnumerable<User>> FindAsync(Func<User, bool> predicate)
+    public async Task<IEnumerable<IdentityUser<int>>> FindAsync(Func<IdentityUser<int>, bool> predicate)
     {
         try
         {
@@ -68,7 +68,7 @@ public class UsersRepository : IRepository<User>
         }
     }
 
-    public async Task<User> CreateAsync(User user)
+    public async Task<IdentityUser<int>> CreateAsync(IdentityUser<int> user)
     {
         try
         {
@@ -89,7 +89,7 @@ public class UsersRepository : IRepository<User>
         }
     }
 
-    public async Task UpdateAsync(User user)
+    public async Task UpdateAsync(IdentityUser<int> user)
     {
         try
         {
@@ -105,7 +105,7 @@ public class UsersRepository : IRepository<User>
         }
     }
 
-    public async Task DeleteAsync(User user)
+    public async Task DeleteAsync(IdentityUser<int> user)
     {
         try
         {

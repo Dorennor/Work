@@ -10,29 +10,25 @@ public class Tour
 
     [Required]
     [Column("TourName")]
-    public string Name { get; set; }
+    public string TourName { get; set; }
 
     [Required]
     [Column("TourType")]
-    public string Type { get; set; }
+    public string TourType { get; set; }
 
     [Required]
-    [Column("Region")]
-    public string Region { get; set; }
+    [Column("TourRegion")]
+    public string TourRegion { get; set; }
 
     [Required]
-    [Column("MovementType")]
-    public string MovementType { get; set; }
+    [Column("TourMovementType")]
+    public string TourMovementType { get; set; }
 
     [Required]
     [Column("Date")]
     public DateTime TourDateTime { get; set; }
 
     [Required]
-    [Column("Price")]
-    public double Price { get; set; }
-
-    [Required]
-    [Column("TourDuration")]
-    public int TourDuration { get; set; }
+    [Column("TourDurationInDays")]
+    public int TourDurationInDays { get; set; }
 }
