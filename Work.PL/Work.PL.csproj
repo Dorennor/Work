@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>Work.PL.Program</StartupObject>
+    <OutputType>WinExe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>

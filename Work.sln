@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Work.BLL", "Work.BLL\Work.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Work.DAL", "Work.DAL\Work.DAL.csproj", "{83EC0A59-25D2-437D-AAAE-322A0454A473}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Work.WebClient", "Work.WebClient\Work.WebClient.csproj", "{81CCE9AA-CEC0-4E01-80AF-8FEF3720EB4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{83EC0A59-25D2-437D-AAAE-322A0454A473}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83EC0A59-25D2-437D-AAAE-322A0454A473}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83EC0A59-25D2-437D-AAAE-322A0454A473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81CCE9AA-CEC0-4E01-80AF-8FEF3720EB4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81CCE9AA-CEC0-4E01-80AF-8FEF3720EB4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81CCE9AA-CEC0-4E01-80AF-8FEF3720EB4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81CCE9AA-CEC0-4E01-80AF-8FEF3720EB4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

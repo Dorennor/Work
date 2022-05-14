@@ -14,7 +14,7 @@ public class HotelsRepository : IRepository<Hotel>
         _context = context;
     }
 
-    public async Task<IEnumerable<Hotel>> GetAllAsync()
+    public async Task<List<Hotel>> GetAllAsync()
     {
         try
         {
@@ -49,7 +49,7 @@ public class HotelsRepository : IRepository<Hotel>
         }
     }
 
-    public async Task<IEnumerable<Hotel>> FindAsync(Func<Hotel, bool> predicate)
+    public async Task<List<Hotel>> FindAsync(Func<Hotel, bool> predicate)
     {
         try
         {

@@ -14,7 +14,7 @@ public class ToursRepository : IRepository<Tour>
         _context = context;
     }
 
-    public async Task<IEnumerable<Tour>> GetAllAsync()
+    public async Task<List<Tour>> GetAllAsync()
     {
         try
         {
@@ -49,7 +49,7 @@ public class ToursRepository : IRepository<Tour>
         }
     }
 
-    public async Task<IEnumerable<Tour>> FindAsync(Func<Tour, bool> predicate)
+    public async Task<List<Tour>> FindAsync(Func<Tour, bool> predicate)
     {
         try
         {

@@ -6,32 +6,25 @@ namespace Work.PL.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ITransportService _transportService;
+        private readonly ITourService _tourService;
 
-        public HomeController(ITransportService transportService)
+        public HomeController(ITourService tourService)
         {
-            _transportService = transportService;
+            _tourService = tourService;
         }
 
         [HttpGet]
-        [Route("getTransport")]
-        public async Task<ActionResult<TransportModel>> GetTransportByIdAsync(int id)
+        [Route("api/getTours")]
+        public async Task<List<TourModel>> GetAllTours()
         {
-            var transport = await _transportService.GetTransportByIdAsync(id);
-
-            if (transport == null)
-            {
-                return NotFound("ERROR 404");
-            }
-
-            return transport;
+            return await _tourService.GetAllTours();
         }
 
-        [HttpPost]
-        [Route("addTransport")]
-        public async Task AddTransportAsync(TransportModel transportModel)
+        [HttpGet]
+        [Route("api/getTour")]
+        public async Task<TourModel> GetTour(int id)
         {
-            await _transportService.AddTransport(transportModel);
+            return await _tourService.GetTourById(id);
         }
     }
 }

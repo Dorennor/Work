@@ -6,5 +6,5 @@ public interface ITransportService
 {
     Task<TransportModel> GetTransportByIdAsync(int id);
 
-    Task AddTransport(TransportModel transportModel);
+    Task AddTransportAsync(TransportModel transportModel);
 }

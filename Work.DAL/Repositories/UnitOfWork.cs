@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Work.DAL.Data;
 using Work.DAL.Entities;
 using Work.DAL.Interfaces;

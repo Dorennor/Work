@@ -28,9 +28,8 @@ public class TransportService : ITransportService
         return model;
     }
 
-    public async Task AddTransport(TransportModel transportModel)
+    public async Task AddTransportAsync(TransportModel transportModel)
     {
-        var transport = _transportMapper.Map<TransportModel, Transport>(transportModel);
-        await _unitOfWork.Transports.CreateAsync(transport);
+        await _unitOfWork.Transports.CreateAsync(_transportMapper.Map<TransportModel, Transport>(transportModel));
     }
 }

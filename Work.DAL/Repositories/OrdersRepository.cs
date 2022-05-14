@@ -14,7 +14,7 @@ public class OrdersRepository : IRepository<Order>
         _context = context;
     }
 
-    public async Task<IEnumerable<Order>> GetAllAsync()
+    public async Task<List<Order>> GetAllAsync()
     {
         try
         {
@@ -49,7 +49,7 @@ public class OrdersRepository : IRepository<Order>
         }
     }
 
-    public async Task<IEnumerable<Order>> FindAsync(Func<Order, bool> predicate)
+    public async Task<List<Order>> FindAsync(Func<Order, bool> predicate)
     {
         try
         {

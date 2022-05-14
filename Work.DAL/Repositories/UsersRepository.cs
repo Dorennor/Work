@@ -14,7 +14,7 @@ public class UsersRepository : IRepository<IdentityUser<int>>
         _context = context;
     }
 
-    public async Task<IEnumerable<IdentityUser<int>>> GetAllAsync()
+    public async Task<List<IdentityUser<int>>> GetAllAsync()
     {
         try
         {
@@ -49,7 +49,7 @@ public class UsersRepository : IRepository<IdentityUser<int>>
         }
     }
 
-    public async Task<IEnumerable<IdentityUser<int>>> FindAsync(Func<IdentityUser<int>, bool> predicate)
+    public async Task<List<IdentityUser<int>>> FindAsync(Func<IdentityUser<int>, bool> predicate)
     {
         try
         {

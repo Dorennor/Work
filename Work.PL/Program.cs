@@ -22,8 +22,12 @@ namespace Work.PL
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddScoped<ITransportService, TransportService>();
+            builder.Services.AddScoped<ITourService, TourService>();
 
             var app = builder.Build();
+#if DEBUG
+            app.UseDeveloperExceptionPage();
+#endif
 
             app.UseHttpsRedirection();
 

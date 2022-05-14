@@ -1,0 +1,13 @@
+﻿@page "{handler?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <form method="Get">
+        <input type="number" name="age" />
+        <input type="submit" asp-page-handler="GreaterThan" value="Старше" />
+        <input type="submit" asp-page-handler="LessThan" value="Младше" />
+    </form>
+</div>
