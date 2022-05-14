@@ -1,4 +1,4 @@
-﻿namespace Work.WebClient.ViewModels;
+﻿namespace Work.WebClient.Models;
 
 public class TourViewModel
 {

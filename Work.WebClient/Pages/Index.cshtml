@@ -1,13 +1,13 @@
-﻿@page "{handler?}"
-@model IndexModel
+﻿@page
+@using Work.WebClient.Models
+@model Work.WebClient.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "WebClient";
 }
 
-<div class="text-center">
-    <form method="Get">
-        <input type="number" name="age" />
-        <input type="submit" asp-page-handler="GreaterThan" value="Старше" />
-        <input type="submit" asp-page-handler="LessThan" value="Младше" />
-    </form>
-</div>
+@{
+    foreach (TourViewModel tour in Model.Tours)
+    {
+        <p>@tour.TourName</p>
+    }
+}

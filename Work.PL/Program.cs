@@ -27,6 +27,7 @@ namespace Work.PL
             var app = builder.Build();
 #if DEBUG
             app.UseDeveloperExceptionPage();
+            app.UseHsts();
 #endif
 
             app.UseHttpsRedirection();
