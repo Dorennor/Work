@@ -23,6 +23,7 @@ namespace Work.PL
 
             builder.Services.AddScoped<ITransportService, TransportService>();
             builder.Services.AddScoped<ITourService, TourService>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 #if DEBUG
