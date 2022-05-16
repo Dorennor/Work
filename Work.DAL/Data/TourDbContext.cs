@@ -4,7 +4,7 @@ using Work.DAL.Entities;
 
 namespace Work.DAL.Data;
 
-public sealed class TourDbContext : DbContext
+public class TourDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
 

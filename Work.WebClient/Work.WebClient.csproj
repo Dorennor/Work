@@ -65,7 +65,6 @@
     <Folder Include="Data\" />
     <Folder Include="Models\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Pages\Views\Tour\" />
     <Folder Include="Services\" />
     <Folder Include="Pages\Views\Order\" />
   </ItemGroup>

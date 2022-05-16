@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Work.DAL.Data;
 
@@ -11,9 +12,10 @@ using Work.DAL.Data;
 namespace Work.DAL.Migrations
 {
     [DbContext(typeof(TourDbContext))]
-    partial class TourDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220516043315_FixedOrderEntity")]
+    partial class FixedOrderEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

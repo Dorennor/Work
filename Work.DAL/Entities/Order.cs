@@ -21,7 +21,7 @@ public class Order
     public int UserId { get; set; }
 
     [ForeignKey("UserId")]
-    public IdentityUser<int> User { get; set; }
+    public User User { get; set; }
 
     [Column("HotelReservationTicket")]
     public int? HotelTicketReservationId { get; set; }
