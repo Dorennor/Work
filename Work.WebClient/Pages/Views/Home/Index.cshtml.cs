@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Serilog;
 using Work.WebClient.Interfaces;
 using Work.WebClient.Models;
 
@@ -14,6 +15,11 @@ namespace Work.WebClient.Pages.Views.Home
         {
             _userManager = userManager;
             _tourService = tourService;
+
+            if (Tours == null)
+            {
+                Tours = _tourService.GetAllToursAsync().Result;
+            }
         }
 
         public async Task OnGet(bool logout = false, string sort = "none")
@@ -24,42 +30,80 @@ namespace Work.WebClient.Pages.Views.Home
                 Response.Redirect("/Views/Home/Index");
             }
 
-            Tours = await _tourService.GetAllToursAsync();
+            if (Tours == null)
+            {
+                Tours = await _tourService.GetAllToursAsync();
+            }
+
             if (Tours != null)
             {
                 switch (sort)
                 {
-                    case "name": Tours = Tours.OrderBy(t => t.TourName).ToList();
+                    case "name":
+                        Tours = Tours.OrderBy(t => t.TourName).ToList();
                         break;
-                    case "type": Tours = Tours.OrderBy(t => t.TourType).ToList();
+
+                    case "type":
+                        Tours = Tours.OrderBy(t => t.TourType).ToList();
                         break;
-                    case "region": Tours = Tours.OrderBy(t => t.TourRegion).ToList();
+
+                    case "region":
+                        Tours = Tours.OrderBy(t => t.TourRegion).ToList();
                         break;
-                    case "movement": Tours = Tours.OrderBy(t => t.TourMovementType).ToList();
+
+                    case "movement":
+                        Tours = Tours.OrderBy(t => t.TourMovementType).ToList();
                         break;
-                    case "date": Tours = Tours.OrderBy(t => t.TourDateTime).ToList();
+
+                    case "date":
+                        Tours = Tours.OrderBy(t => t.TourDateTime).ToList();
                         break;
-                    case "duration": Tours = Tours.OrderBy(t => t.TourDurationInDays).ToList();
+
+                    case "duration":
+                        Tours = Tours.OrderBy(t => t.TourDurationInDays).ToList();
                         break;
+
                     case "nameDescending":
                         Tours = Tours.OrderByDescending(t => t.TourName).ToList();
                         break;
+
                     case "typeDescending":
                         Tours = Tours.OrderByDescending(t => t.TourType).ToList();
                         break;
+
                     case "regionDescending":
                         Tours = Tours.OrderByDescending(t => t.TourRegion).ToList();
                         break;
+
                     case "movementDescending":
                         Tours = Tours.OrderByDescending(t => t.TourMovementType).ToList();
                         break;
+
                     case "dateDescending":
                         Tours = Tours.OrderByDescending(t => t.TourDateTime).ToList();
                         break;
+
                     case "durationDescending":
                         Tours = Tours.OrderByDescending(t => t.TourDurationInDays).ToList();
                         break;
                 }
+            }
+        }
+
+        public async Task OnPostSearch(string search)
+        {
+            Log.Information(search);
+            if (Tours != null)
+            {
+                if (search != "")
+                {
+                    Tours = Tours.Where(t => t.TourName.Contains(search)).ToList();
+                }
+            }
+            else
+            {
+                Tours = await _tourService.GetAllToursAsync();
+                Tours = Tours.Where(t => t.TourName.Contains(search)).ToList();
             }
         }
     }
