@@ -11,4 +11,5 @@ public interface ITourService
     Task DeleteTourAsync(int id);
 
     Task<TourViewModel> GetTourAsync(int id);
+    Task<List<TourViewModel?>> GetAllToursAsync();
 }

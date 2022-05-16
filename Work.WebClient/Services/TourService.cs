@@ -67,4 +67,20 @@ public class TourService : ITourService
     {
         throw new NotImplementedException();
     }
+
+    public async Task<List<TourViewModel?>> GetAllToursAsync()
+    {
+        try
+        {
+            using var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:60425/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            return await httpClient.GetFromJsonAsync<List<TourViewModel>>("api/getTours");
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
 }
