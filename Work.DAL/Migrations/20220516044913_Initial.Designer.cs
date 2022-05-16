@@ -12,8 +12,8 @@ using Work.DAL.Data;
 namespace Work.DAL.Migrations
 {
     [DbContext(typeof(TourDbContext))]
-    [Migration("20220515053221_EditedUniqueFields")]
-    partial class EditedUniqueFields
+    [Migration("20220516044913_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,84 +23,6 @@ namespace Work.DAL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser<int>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IdentityUser<int>");
-                });
-
-            modelBuilder.Entity("Work.DAL.Entities.Claim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ClaimType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ClaimType");
-
-                    b.Property<string>("ClaimValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ClaimValue");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Claims");
-                });
 
             modelBuilder.Entity("Work.DAL.Entities.Hotel", b =>
                 {
@@ -222,41 +144,6 @@ namespace Work.DAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("Work.DAL.Entities.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Administrator"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Manager"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "User"
-                        });
                 });
 
             modelBuilder.Entity("Work.DAL.Entities.Tour", b =>
@@ -398,10 +285,19 @@ namespace Work.DAL.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("Email");
 
+                    b.Property<bool>("IsLogged")
+                        .HasColumnType("bit")
+                        .HasColumnName("IsLogged");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("PasswordHash");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Name");
 
                     b.HasKey("Id");
 
@@ -415,60 +311,25 @@ namespace Work.DAL.Migrations
                         {
                             Id = 1,
                             Email = "administrator@mail.com",
-                            PasswordHash = "CF-83-5D-E3-D4-EA-01-36-7C-45-E4-12-E7-A9-39-3A-85-A4-E4-0A-F1-49-ED-8C-3E-D6-C3-7C-05-B6-7B-27-81-3D-7F-F8-07-2C-10-35-CE-DD-19-41-5A-DF-17-12-8D-63-18-6F-05-F0-D6-56-00-2B-0C-A1-C3-4F-44-A0"
+                            IsLogged = true,
+                            PasswordHash = "CF-83-5D-E3-D4-EA-01-36-7C-45-E4-12-E7-A9-39-3A-85-A4-E4-0A-F1-49-ED-8C-3E-D6-C3-7C-05-B6-7B-27-81-3D-7F-F8-07-2C-10-35-CE-DD-19-41-5A-DF-17-12-8D-63-18-6F-05-F0-D6-56-00-2B-0C-A1-C3-4F-44-A0",
+                            Role = "Administrator"
                         },
                         new
                         {
                             Id = 2,
                             Email = "manager@mail.com",
-                            PasswordHash = "5F-C2-CA-6F-08-59-19-F2-F7-76-26-F1-E2-80-FA-B9-CC-92-B4-ED-C9-ED-C5-3A-C6-EE-E3-F7-2C-5C-50-8E-86-9E-E9-D6-7A-96-D6-39-86-D1-4C-1C-2B-82-C3-5F-F5-F3-14-94-BE-A8-31-01-54-24-F5-9C-96-FF-F6-64"
+                            IsLogged = false,
+                            PasswordHash = "5F-C2-CA-6F-08-59-19-F2-F7-76-26-F1-E2-80-FA-B9-CC-92-B4-ED-C9-ED-C5-3A-C6-EE-E3-F7-2C-5C-50-8E-86-9E-E9-D6-7A-96-D6-39-86-D1-4C-1C-2B-82-C3-5F-F5-F3-14-94-BE-A8-31-01-54-24-F5-9C-96-FF-F6-64",
+                            Role = "Manager"
                         },
                         new
                         {
                             Id = 3,
                             Email = "user@mail.com",
-                            PasswordHash = "B1-43-61-40-4C-07-8F-FD-54-9C-03-DB-44-3C-3F-ED-E2-F3-E5-34-D7-3F-78-F7-73-01-ED-97-D4-A4-36-A9-FD-9D-B0-5E-E8-B3-25-C0-AD-36-43-8B-43-FE-C8-51-0C-20-4F-C1-C1-ED-B2-1D-09-41-C0-0E-9E-2C-1C-E2"
-                        });
-                });
-
-            modelBuilder.Entity("Work.DAL.Entities.UserRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int")
-                        .HasColumnName("RoleId");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .HasColumnName("UserId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            RoleId = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            RoleId = 2,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            RoleId = 3,
-                            UserId = 3
+                            IsLogged = false,
+                            PasswordHash = "B1-43-61-40-4C-07-8F-FD-54-9C-03-DB-44-3C-3F-ED-E2-F3-E5-34-D7-3F-78-F7-73-01-ED-97-D4-A4-36-A9-FD-9D-B0-5E-E8-B3-25-C0-AD-36-43-8B-43-FE-C8-51-0C-20-4F-C1-C1-ED-B2-1D-09-41-C0-0E-9E-2C-1C-E2",
+                            Role = "User"
                         });
                 });
 
@@ -495,13 +356,13 @@ namespace Work.DAL.Migrations
                         .WithMany()
                         .HasForeignKey("TransportId");
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<int>", "User")
+                    b.HasOne("Work.DAL.Entities.HotelTicket", "HotelReservationTicket")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Work.DAL.Entities.HotelTicket", "HotelReservationTicket")
+                    b.HasOne("Work.DAL.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

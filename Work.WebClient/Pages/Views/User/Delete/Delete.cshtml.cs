@@ -8,10 +8,10 @@ namespace Work.WebClient.Pages.Views.User.Delete
 {
     public class DeleteModel : PageModel
     {
-        private IUserManager _userManager;
+        private IUserManagerService _userManager;
         public List<UserViewModel> Users { get; set; }
 
-        public DeleteModel(IUserManager userManager)
+        public DeleteModel(IUserManagerService userManager)
         {
             _userManager = userManager;
 
@@ -26,7 +26,7 @@ namespace Work.WebClient.Pages.Views.User.Delete
         {
         }
 
-        public async Task OnPostDelete(int id)
+        public async Task OnPostDeleteAsync(int id)
         {
             await _userManager.DeleteUserAsync(id);
             Response.Redirect("/Views/User/Delete/Delete");

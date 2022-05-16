@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Serilog;
 using Work.DAL.Entities;
 
 namespace Work.DAL.Data;
@@ -48,11 +49,59 @@ public class TourDbContext : DbContext
 
     public TourDbContext()
     {
-        Database.Migrate();
+        try
+        {
+            Database.Migrate();
+        }
+        catch
+        {
+            Log.Information("Migration, try #1");
+            try
+            {
+                Database.Migrate();
+            }
+            catch
+            {
+                Log.Information("Migration, try #2");
+                try
+                {
+                    Database.Migrate();
+                }
+                catch
+                {
+                    Log.Information("Migration, try #3");
+                    Log.Information("Migration failed.");
+                }
+            }
+        }
     }
 
     public TourDbContext(DbContextOptions options) : base(options)
     {
-        Database.Migrate();
+        try
+        {
+            Database.Migrate();
+        }
+        catch
+        {
+            Log.Information("Migration, try #1");
+            try
+            {
+                Database.Migrate();
+            }
+            catch
+            {
+                Log.Information("Migration, try #2");
+                try
+                {
+                    Database.Migrate();
+                }
+                catch
+                {
+                    Log.Information("Migration, try #3");
+                    Log.Information("Migration failed.");
+                }
+            }
+        }
     }
 }

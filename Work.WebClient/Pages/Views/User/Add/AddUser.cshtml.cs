@@ -6,9 +6,9 @@ namespace Work.WebClient.Pages.Views.User.Add
 {
     public class AddUserModel : PageModel
     {
-        private IUserManager _userManager;
+        private IUserManagerService _userManager;
 
-        public AddUserModel(IUserManager userManager)
+        public AddUserModel(IUserManagerService userManager)
         {
             _userManager = userManager;
         }
@@ -17,7 +17,7 @@ namespace Work.WebClient.Pages.Views.User.Add
         {
         }
 
-        public async Task OnPostAddUser(string email, string password, string confirmPassword)
+        public async Task OnPostAddUserAsync(string email, string password, string confirmPassword)
         {
             if (email == null || password == null || confirmPassword == null || password != confirmPassword)
             {
@@ -25,7 +25,7 @@ namespace Work.WebClient.Pages.Views.User.Add
                 return;
             }
 
-            var result = await _userManager.AddUserAsync(email, UserManager.GeneratePasswordHash(password));
+            var result = await _userManager.AddUserAsync(email, UserManagerService.GeneratePasswordHash(password));
 
             if (!result)
             {

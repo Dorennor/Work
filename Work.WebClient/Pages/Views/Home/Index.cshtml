@@ -1,5 +1,5 @@
 ﻿@page "{handler?}"
-@inject IUserManager UserManager
+@inject IUserManagerService UserManager
 @using Work.WebClient.Interfaces
 
 @model Work.WebClient.Pages.Views.Home.IndexModel
@@ -17,6 +17,7 @@
         <td>Movement type</td>
         <td>Tour date</td>
         <td>Tour duration</td>
+        <td></td>
         @if (UserManager.LoggedUser != null && UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "User")
         {
             <td></td>
@@ -32,11 +33,14 @@
             <td>@tour.TourMovementType</td>
             <td>@tour.TourDateTime.ToShortDateString()</td>
             <td>@tour.TourDurationInDays @(tour.TourDurationInDays == 1 ? "day" : "days")</td>
+            <td>
+                <a class="btn btn-primary" role="button" asp-page="/Views/Tour/Index" asp-route-id="@tour.Id"><p>Information</p></a>
+            </td>
 
             @if (UserManager.LoggedUser != null && UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "User")
             {
                 <td>
-                    <a class="btn btn-primary" role="button" asp-page="/Views/Tour/Index" asp-route-tour="@tour"><p>Book </p></a>
+                    <a class="btn btn-primary" role="button" asp-page="/Views/Order/Index" asp-route-id="@tour.Id"><p>Book</p></a>
                 </td>
             }
         </tr>

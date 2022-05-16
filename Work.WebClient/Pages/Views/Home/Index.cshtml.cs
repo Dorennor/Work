@@ -8,10 +8,10 @@ namespace Work.WebClient.Pages.Views.Home
     public class IndexModel : PageModel
     {
         
-        private IUserManager _userManager;
+        private IUserManagerService _userManager;
         public List<TourViewModel> Tours { get; set; }
 
-        public IndexModel(IUserManager userManager)
+        public IndexModel(IUserManagerService userManager)
         {
             _userManager = userManager;
 

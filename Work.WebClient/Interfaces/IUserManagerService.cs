@@ -2,7 +2,7 @@
 
 namespace Work.WebClient.Interfaces;
 
-public interface IUserManager
+public interface IUserManagerService
 {
     UserViewModel? LoggedUser { get; }
 
@@ -15,6 +15,7 @@ public interface IUserManager
     Task<bool> AddManagerAsync(string email, string passwordHash);
 
     Task<bool> AddUserAsync(string email, string passwordHash);
+
     Task<bool> DeleteUserAsync(int id);
 
     Task LogoutAsync();

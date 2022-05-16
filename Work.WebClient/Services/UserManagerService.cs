@@ -6,11 +6,11 @@ using Work.WebClient.Models;
 
 namespace Work.WebClient.Services;
 
-public class UserManager : IUserManager
+public class UserManagerService : IUserManagerService
 {
     private UserViewModel _loggedUser;
 
-    public UserManager()
+    public UserManagerService()
     {
         var httpClient = new HttpClient();
 
@@ -62,6 +62,7 @@ public class UserManager : IUserManager
                 {
                     Email = email,
                     PasswordHash = passwordHash,
+                    IsLogged = true
                 };
 
                 var result = await httpClient.PostAsJsonAsync("api/login", user);

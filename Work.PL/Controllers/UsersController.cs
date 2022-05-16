@@ -4,30 +4,13 @@ using Work.BLL.Models;
 
 namespace Work.PL.Controllers
 {
-    public class HomeController : Controller
+    public class UsersController : Controller
     {
-        private readonly ITourService _tourService;
         private readonly IUserService _userService;
 
-        public HomeController(ITourService tourService, IUserService userService)
+        public UsersController(IUserService userService)
         {
-            _tourService = tourService;
             _userService = userService;
-        }
-
-        [HttpGet]
-        [Route("")]
-        [Route("api/getTours")]
-        public async Task<List<TourModel>> GetAllToursAsync()
-        {
-            return await _tourService.GetAllTours();
-        }
-
-        [HttpGet]
-        [Route("api/getTour")]
-        public async Task<TourModel> GetTourAsync(int id)
-        {
-            return await _tourService.GetTourById(id);
         }
 
         [HttpGet]

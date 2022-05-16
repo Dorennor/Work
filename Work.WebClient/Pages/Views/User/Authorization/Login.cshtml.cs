@@ -7,9 +7,9 @@ namespace Work.WebClient.Pages.Views.User.Authorization
 {
     public class LoginModel : PageModel
     {
-        private IUserManager _userManager;
+        private IUserManagerService _userManager;
 
-        public LoginModel(IUserManager userManager)
+        public LoginModel(IUserManagerService userManager)
         {
             _userManager = userManager;
         }
@@ -18,7 +18,7 @@ namespace Work.WebClient.Pages.Views.User.Authorization
         {
         }
 
-        public async Task OnPostLogin(string email, string password)
+        public async Task OnPostLoginAsync(string email, string password)
         {
             if (email == null || password == null)
             {
@@ -26,7 +26,7 @@ namespace Work.WebClient.Pages.Views.User.Authorization
                 return;
             }
 
-            var result = await _userManager.LoginAsync(email, UserManager.GeneratePasswordHash(password));
+            var result = await _userManager.LoginAsync(email, UserManagerService.GeneratePasswordHash(password));
 
             Log.Information(result.ToString());
 

@@ -6,9 +6,9 @@ namespace Work.WebClient.Pages.Views.User.Authorization
 {
     public class RegisterModel : PageModel
     {
-        private IUserManager _userManager;
+        private IUserManagerService _userManager;
 
-        public RegisterModel(IUserManager userManager)
+        public RegisterModel(IUserManagerService userManager)
         {
             _userManager = userManager;
         }
@@ -17,7 +17,7 @@ namespace Work.WebClient.Pages.Views.User.Authorization
         {
         }
 
-        public async Task OnPostRegister(string email, string password, string confirmPassword)
+        public async Task OnPostRegisterAsync(string email, string password, string confirmPassword)
         {
             if (email == null || password == null || confirmPassword == null || password != confirmPassword)
             {
@@ -25,7 +25,7 @@ namespace Work.WebClient.Pages.Views.User.Authorization
                 return;
             }
 
-            var result = await _userManager.RegisterAsync(email, UserManager.GeneratePasswordHash(password));
+            var result = await _userManager.RegisterAsync(email, UserManagerService.GeneratePasswordHash(password));
 
             if (!result)
             {

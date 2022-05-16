@@ -1,5 +1,5 @@
 ﻿@using Work.WebClient.Interfaces
-@inject IUserManager UserManager
+@inject IUserManagerService UserManager
 
 <!DOCTYPE html>
 <html>
@@ -29,16 +29,14 @@
                         @if (UserManager.LoggedUser!.Role == "Administrator")
                         {
                             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse dropdown">
-                                <a class="dropdown-item" asp-page="/Views/User/Delete/Delete">Delete person</a>
-                            </div>
-                            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="accountDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Add person
+                                    Persons
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownMenuButton">
                                     <a class="dropdown-item" asp-page="/Views/User/Add/AddAdministrator">Add Administrator</a>
                                     <a class="dropdown-item" asp-page="/Views/User/Add/AddManager">Add Manager</a>
                                     <a class="dropdown-item" asp-page="/Views/User/Add/AddUser">Add User</a>
+                                    <a class="dropdown-item" asp-page="/Views/User/Delete/Delete">Delete person</a>
                                 </div>
                             </div>
                         }

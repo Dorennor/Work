@@ -15,7 +15,7 @@ namespace Work.WebClient
             {
                 options.Conventions.AddPageRoute("/Views/Home/Index", "");
             });
-            builder.Services.AddTransient<IUserManager, UserManager>();
+            builder.Services.AddTransient<IUserManagerService, UserManagerService>();
 
             var app = builder.Build();
 
