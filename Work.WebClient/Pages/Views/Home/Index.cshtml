@@ -1,0 +1,46 @@
+﻿@page "{handler?}"
+@inject IUserManager UserManager
+@using Work.WebClient.Interfaces
+
+@model Work.WebClient.Pages.Views.Home.IndexModel
+
+@{
+    ViewData["Title"] = "WebClient";
+}
+
+
+<table class="table">
+    <tr>
+        <td>Name</td>
+        <td>Type</td>
+        <td>Region</td>
+        <td>Movement type</td>
+        <td>Tour date</td>
+        <td>Tour duration</td>
+        @if (UserManager.LoggedUser != null && UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "User")
+        {
+            <td></td>
+        }
+    </tr>
+
+    @foreach (var tour in Model.Tours)
+    {
+        <tr>
+            <td>@tour.TourName</td>
+            <td>@tour.TourType</td>
+            <td>@tour.TourRegion</td>
+            <td>@tour.TourMovementType</td>
+            <td>@tour.TourDateTime.ToShortDateString()</td>
+            <td>@tour.TourDurationInDays @(tour.TourDurationInDays == 1 ? "day" : "days")</td>
+
+            @if (UserManager.LoggedUser != null && UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "User")
+            {
+                <td>
+                    <a class="btn btn-primary" role="button" asp-page="/Views/Tour/Index" asp-route-tour="@tour"><p>Book </p></a>
+                </td>
+            }
+        </tr>
+    }
+    
+</table>
+

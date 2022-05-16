@@ -16,8 +16,8 @@ public class TransportService : ITransportService
     {
         _unitOfWork = new UnitOfWork();
 
-        var configPerson = new MapperConfiguration(cfg => cfg.CreateMap<Transport, TransportModel>().ReverseMap());
-        _transportMapper = new Mapper(configPerson);
+        var config = new MapperConfiguration(cfg => cfg.CreateMap<Transport, TransportModel>().ReverseMap());
+        _transportMapper = new Mapper(config);
     }
 
     public async Task<TransportModel> GetTransportByIdAsync(int id)

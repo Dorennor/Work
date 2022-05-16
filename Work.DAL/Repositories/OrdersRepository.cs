@@ -18,7 +18,7 @@ public class OrdersRepository : IRepository<Order>
     {
         try
         {
-            var obj = _context.Orders.ToList();
+            var obj = await _context.Orders.ToListAsync();
             if (obj != null) return obj;
             else return null;
         }

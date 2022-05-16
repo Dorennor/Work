@@ -16,8 +16,8 @@ public class TourService : ITourService
     {
         _unitOfWork = new UnitOfWork();
 
-        var configPerson = new MapperConfiguration(cfg => cfg.CreateMap<Tour, TourModel>().ReverseMap());
-        _tourMapper = new Mapper(configPerson);
+        var config = new MapperConfiguration(cfg => cfg.CreateMap<Tour, TourModel>().ReverseMap());
+        _tourMapper = new Mapper(config);
     }
 
     public async Task<TourModel> GetTourById(int id)

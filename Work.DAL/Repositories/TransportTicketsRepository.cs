@@ -18,7 +18,7 @@ public class TransportTicketsRepository : IRepository<TransportTicket>
     {
         try
         {
-            var obj = _context.TransportTickets.ToList();
+            var obj = await _context.TransportTickets.ToListAsync();
             if (obj != null) return obj;
             else return null;
         }

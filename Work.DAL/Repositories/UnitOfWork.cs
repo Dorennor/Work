@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Work.DAL.Data;
+﻿using Work.DAL.Data;
 using Work.DAL.Entities;
 using Work.DAL.Interfaces;
 
@@ -10,13 +9,13 @@ public class UnitOfWork : IUnitOfWork
     private bool _disposed = false;
     private readonly TourDbContext _context;
 
-    public IRepository<Tour> _tours;
-    public IRepository<IdentityUser<int>> _users;
-    public IRepository<Order> _orders;
-    public IRepository<HotelTicket> _hotelTickets;
-    public IRepository<Hotel> _hotels;
-    public IRepository<TransportTicket> _transportTickets;
-    public IRepository<Transport> _transports;
+    private IRepository<Tour> _tours;
+    private IRepository<User> _users;
+    private IRepository<Order> _orders;
+    private IRepository<HotelTicket> _hotelTickets;
+    private IRepository<Hotel> _hotels;
+    private IRepository<TransportTicket> _transportTickets;
+    private IRepository<Transport> _transports;
 
     public UnitOfWork()
     {
@@ -33,7 +32,7 @@ public class UnitOfWork : IUnitOfWork
         set => _tours = value;
     }
 
-    public IRepository<IdentityUser<int>> Users
+    public IRepository<User> Users
     {
         get
         {

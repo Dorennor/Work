@@ -18,7 +18,7 @@ public class HotelTicketsRepository : IRepository<HotelTicket>
     {
         try
         {
-            var obj = _context.HotelTickets.ToList();
+            var obj = await _context.HotelTickets.ToListAsync();
             if (obj != null) return obj;
             else return null;
         }

@@ -18,7 +18,7 @@ public class ToursRepository : IRepository<Tour>
     {
         try
         {
-            var obj = _context.Tours.ToList();
+            var obj = await _context.Tours.ToListAsync();
             if (obj != null) return obj;
             else return null;
         }

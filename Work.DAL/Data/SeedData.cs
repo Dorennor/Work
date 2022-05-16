@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Work.DAL.Entities;
 
 namespace Work.DAL.Data;
@@ -8,83 +7,33 @@ public static class SeedData
 {
     public static void SeedUsers(ModelBuilder modelBuilder)
     {
-        IdentityUser<int> admin = new IdentityUser<int>
+        User admin = new User
         {
             Id = 1,
             Email = "administrator@mail.com",
-            NormalizedEmail = "ADMINISTRATOR@MAIL.COM",
-            UserName = "Administrator",
-            NormalizedUserName = "ADMINISTRATOR",
-            EmailConfirmed = true
+            IsLogged = true,
+            Role = "Administrator"
         };
-        IdentityUser<int> manager = new IdentityUser<int>
+        User manager = new User
         {
             Id = 2,
             Email = "manager@mail.com",
-            NormalizedEmail = "MANAGER@MAIL.COM",
-            UserName = "Manager",
-            NormalizedUserName = "MANAGER",
-            EmailConfirmed = true
+            IsLogged = false,
+            Role = "Manager"
         };
-        IdentityUser<int> user = new IdentityUser<int>
+        User user = new User
         {
             Id = 3,
             Email = "user@mail.com",
-            NormalizedEmail = "USER@MAIL.COM",
-            UserName = "User",
-            NormalizedUserName = "USER",
-            EmailConfirmed = true
+            IsLogged = false,
+            Role = "User"
         };
 
-        PasswordHasher<IdentityUser<int>> passwordHasher = new PasswordHasher<IdentityUser<int>>();
-        admin.PasswordHash = passwordHasher.HashPassword(admin, "administrator");
-        manager.PasswordHash = passwordHasher.HashPassword(manager, "manager");
-        user.PasswordHash = passwordHasher.HashPassword(user, "user");
+        admin.GeneratePasswordHash("administrator");
+        manager.GeneratePasswordHash("manager");
+        user.GeneratePasswordHash("user");
 
-        modelBuilder.Entity<IdentityUser<int>>().HasData(admin, manager, user);
-    }
-
-    public static void SeedRoles(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<IdentityRole<int>>().HasData(
-            new IdentityRole<int>
-            {
-                Id = 1,
-                Name = "Administrator",
-                NormalizedName = "ADMINISTRATOR"
-            },
-            new IdentityRole<int>
-            {
-                Id = 2,
-                Name = "Manager",
-                NormalizedName = "MANAGER"
-            },
-            new IdentityRole<int>
-            {
-                Id = 3,
-                Name = "User",
-                NormalizedName = "USER"
-            });
-    }
-
-    public static void SeedUserRoles(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<IdentityUserRole<int>>().HasData(
-            new IdentityUserRole<int>
-            {
-                RoleId = 1,
-                UserId = 1
-            },
-            new IdentityUserRole<int>
-            {
-                RoleId = 2,
-                UserId = 2
-            },
-            new IdentityUserRole<int>
-            {
-                RoleId = 3,
-                UserId = 3
-            });
+        modelBuilder.Entity<User>().HasData(admin, manager, user);
     }
 
     public static void SeedTransport(ModelBuilder modelBuilder)

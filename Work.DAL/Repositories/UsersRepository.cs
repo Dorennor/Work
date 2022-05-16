@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Work.DAL.Data;
+using Work.DAL.Entities;
 using Work.DAL.Interfaces;
 
 namespace Work.DAL.Repositories;
 
-public class UsersRepository : IRepository<IdentityUser<int>>
+public class UsersRepository : IRepository<User>
 {
     private readonly TourDbContext _context;
 
@@ -14,11 +14,11 @@ public class UsersRepository : IRepository<IdentityUser<int>>
         _context = context;
     }
 
-    public async Task<List<IdentityUser<int>>> GetAllAsync()
+    public async Task<List<User>> GetAllAsync()
     {
         try
         {
-            var obj = _context.Users.ToList();
+            var obj = await _context.Users.ToListAsync();
             if (obj != null) return obj;
             else return null;
         }
@@ -28,7 +28,7 @@ public class UsersRepository : IRepository<IdentityUser<int>>
         }
     }
 
-    public async Task<IdentityUser<int>> GetByIdAsync(int id)
+    public async Task<User> GetByIdAsync(int id)
     {
         try
         {
@@ -49,7 +49,7 @@ public class UsersRepository : IRepository<IdentityUser<int>>
         }
     }
 
-    public async Task<List<IdentityUser<int>>> FindAsync(Func<IdentityUser<int>, bool> predicate)
+    public async Task<List<User>> FindAsync(Func<User, bool> predicate)
     {
         try
         {
@@ -68,7 +68,7 @@ public class UsersRepository : IRepository<IdentityUser<int>>
         }
     }
 
-    public async Task<IdentityUser<int>> CreateAsync(IdentityUser<int> user)
+    public async Task<User> CreateAsync(User user)
     {
         try
         {
@@ -89,7 +89,7 @@ public class UsersRepository : IRepository<IdentityUser<int>>
         }
     }
 
-    public async Task UpdateAsync(IdentityUser<int> user)
+    public async Task UpdateAsync(User user)
     {
         try
         {
@@ -105,7 +105,7 @@ public class UsersRepository : IRepository<IdentityUser<int>>
         }
     }
 
-    public async Task DeleteAsync(IdentityUser<int> user)
+    public async Task DeleteAsync(User user)
     {
         try
         {

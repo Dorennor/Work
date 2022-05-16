@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Work.DAL.Entities;
 
 namespace Work.DAL.Data;
 
-public sealed class TourDbContext : IdentityDbContext<IdentityUser<int>, IdentityRole<int>, int>
+public sealed class TourDbContext : DbContext
 {
+    public DbSet<User> Users { get; set; }
+
     public DbSet<Tour> Tours { get; set; }
 
     public DbSet<Order> Orders { get; set; }
@@ -40,15 +40,18 @@ public sealed class TourDbContext : IdentityDbContext<IdentityUser<int>, Identit
     {
         base.OnModelCreating(modelBuilder);
 
-        SeedData.SeedRoles(modelBuilder);
         SeedData.SeedUsers(modelBuilder);
-        SeedData.SeedUserRoles(modelBuilder);
         SeedData.SeedTours(modelBuilder);
         SeedData.SeedTransport(modelBuilder);
         SeedData.SeedHotels(modelBuilder);
     }
 
     public TourDbContext()
+    {
+        Database.Migrate();
+    }
+
+    public TourDbContext(DbContextOptions options) : base(options)
     {
         Database.Migrate();
     }

@@ -9,12 +9,6 @@ namespace Work.PL
     {
         public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.Console(theme: AnsiConsoleTheme.Code)
-                .WriteTo.File("logs/log.log", rollingInterval: RollingInterval.Day)
-                .CreateLogger();
-
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
@@ -26,22 +20,24 @@ namespace Work.PL
             builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console(theme: AnsiConsoleTheme.Code)
+                .WriteTo.File(AppContext.BaseDirectory + $"/logs/{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}_log.log", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
 #if DEBUG
             app.UseDeveloperExceptionPage();
             app.UseHsts();
 #endif
 
             app.UseHttpsRedirection();
-
             app.MapControllers();
-
             app.Run();
-
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
