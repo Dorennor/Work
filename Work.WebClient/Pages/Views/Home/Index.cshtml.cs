@@ -7,7 +7,6 @@ namespace Work.WebClient.Pages.Views.Home
 {
     public class IndexModel : PageModel
     {
-        
         private IUserManagerService _userManager;
         public List<TourViewModel> Tours { get; set; }
 

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Http.Headers;
-using Serilog;
 using Work.WebClient.Interfaces;
 using Work.WebClient.Models;
 

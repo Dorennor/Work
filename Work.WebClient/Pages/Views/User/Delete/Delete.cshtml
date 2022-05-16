@@ -10,9 +10,12 @@
             <td>Role</td>
             <td>IsLogged</td>
             <td></td>
-            @if (UserManager.LoggedUser != null && UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "User")
+            @if (UserManager.LoggedUser != null)
             {
-                <td></td>
+                @if (UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "User")
+                {
+                    <td></td>
+                }
             }
         </tr>
 
@@ -30,6 +33,5 @@
                 </td>
             </tr>
         }
-    
     </table>
 }

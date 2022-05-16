@@ -35,18 +35,22 @@ public class TourService : ITourService
         return toursModels;
     }
 
-    public Task AddTourAsync(TourModel tourModel)
+    public async Task AddTourAsync(TourModel tourModel)
     {
-        throw new NotImplementedException();
+        var tour = _tourMapper.Map<TourModel, Tour>(tourModel);
+        await _unitOfWork.Tours.CreateAsync(tour);
     }
 
     public async Task EditTourAsync(TourModel tourModel)
     {
-        await _unitOfWork.Tours.UpdateAsync(_tourMapper.Map<TourModel, Tour>(tourModel));
+        var tour = _tourMapper.Map<TourModel, Tour>(tourModel);
+        await _unitOfWork.Tours.UpdateAsync(tour);
     }
 
-    public async Task DeleteTourAsync(TourModel tourModel)
+    public async Task DeleteTourAsync(int id)
     {
-        await _unitOfWork.Tours.DeleteAsync(_tourMapper.Map<TourModel, Tour>(tourModel));
+        var tourList = await _unitOfWork.Tours.FindAsync(t => t.Id == id);
+        var tour = tourList.First();
+        await _unitOfWork.Tours.DeleteAsync(tour);
     }
 }

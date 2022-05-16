@@ -15,7 +15,9 @@ public interface IUserService
     Task<bool> LoginAsync(UserModel userModel);
 
     Task LogoutAsync(UserModel userModel);
+
     Task DeleteUserAsync(int id);
+
     Task<List<UserModel>> GetUsersAsync();
 
     Task<UserModel?> GetLoggedUserAsync();

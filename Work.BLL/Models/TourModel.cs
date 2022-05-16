@@ -15,4 +15,9 @@ public class TourModel
     public DateTime TourDateTime { get; set; }
 
     public int TourDurationInDays { get; set; }
+
+    public override string ToString()
+    {
+        return $"Id={Id}, TourName={TourName}, TourType={TourType}, TourRegion={TourRegion}, TourMovementType={TourMovementType}, TourDateTime={TourDateTime}, TourDurationInDays={TourDurationInDays}";
+    }
 }

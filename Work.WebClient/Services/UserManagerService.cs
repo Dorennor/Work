@@ -8,7 +8,7 @@ namespace Work.WebClient.Services;
 
 public class UserManagerService : IUserManagerService
 {
-    private UserViewModel _loggedUser;
+    private UserViewModel? _loggedUser;
 
     public UserManagerService()
     {
@@ -19,14 +19,14 @@ public class UserManagerService : IUserManagerService
 
         try
         {
-            var loggedUser = httpClient.GetFromJsonAsync<UserViewModel>("api/getLoggedUser").Result;
+            var loggedUser = httpClient.GetFromJsonAsync<UserViewModel?>("api/getLoggedUser").Result;
         }
         catch (Exception e)
         {
         }
     }
 
-    public UserViewModel LoggedUser
+    public UserViewModel? LoggedUser
     {
         get
         {

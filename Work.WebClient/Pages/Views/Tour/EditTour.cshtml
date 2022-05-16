@@ -1,4 +1,39 @@
-﻿@page
+﻿@page "{handler?}"
 @model Work.WebClient.Pages.Views.Tour.EditTourModel
 @{
+    <h2>Edit tour</h2>
+
+    <form method="post">
+        <div>
+            <input type="hidden" name="id" value="@Model.Id"/>
+        </div>
+        <div>
+            <label>Tour name</label><br/>
+            <input type="text" name="tourName"/>
+        </div>
+        <div>
+            <label>Tour type</label><br/>
+            <input type="text" name="tourType"/>
+        </div>
+        <div>
+            <label>Tour region</label><br/>
+            <input type="text" name="tourRegion"/>
+        </div>
+        <div>
+            <label>Tour movement type</label><br/>
+            <input type="text" name="tourMovementType"/>
+        </div>
+        <div>
+            <label>Tour date</label><br/>
+            <input type="date" name="tourDate"/>
+        </div>
+        <div>
+            <label>Tour duration (in days)</label><br/>
+            <input type="number" name="duration"/>
+        </div>
+        <div>
+            <br/><input type="submit" asp-page-handler="EditTour" value="Edit"/>
+        </div>
+    </form>
 }
+

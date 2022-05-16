@@ -4,11 +4,11 @@ namespace Work.WebClient.Interfaces;
 
 public interface ITourService
 {
-    Task<bool> AddTourAsync(TourViewModel tourViewModel);
+    Task AddTourAsync(TourViewModel tourViewModel);
 
-    Task<bool> UpdateTourAsync(TourViewModel tourViewModel);
+    Task EditTourAsync(TourViewModel tourViewModel);
 
-    Task<bool> DeleteTourAsync(int id);
+    Task DeleteTourAsync(int id);
 
     Task<TourViewModel> GetTourAsync(int id);
 }

@@ -25,7 +25,7 @@ namespace Work.WebClient.Pages.Views.Tour
                 return;
             }
 
-            var result = await _tourService.AddTourAsync(new TourViewModel
+            await _tourService.AddTourAsync(new TourViewModel
             {
                 TourName = tourName,
                 TourType = tourType,
@@ -35,12 +35,7 @@ namespace Work.WebClient.Pages.Views.Tour
                 TourDurationInDays = duration
             });
 
-            if (!result)
-            {
-                Response.Redirect("/Views/Tour/AddTour");
-                return;
-            }
-            Response.Redirect("/Views/Home/Index", result);
+            Response.Redirect("/Views/Home/Index");
         }
     }
 }
