@@ -1,0 +1,41 @@
+﻿@page "{handler?}"
+@inject IUserManagerService UserManagerService
+@using Work.WebClient.Interfaces
+@model Work.WebClient.Pages.Views.Tour.TourInfo
+@{
+    <form method="post">
+        <div>
+            <label>Tour name: @Model.TourViewModel.TourName</label><br/>
+            <input type="hidden" name="tourName" value="@Model.TourViewModel.TourName"/>
+        </div>
+        <div>
+            <label>Tour type: @Model.TourViewModel.TourType</label><br/>
+            <input type="hidden" name="tourType" value="@Model.TourViewModel.TourType"/>
+        </div>
+        <div>
+            <label>Tour region: @Model.TourViewModel.TourRegion</label><br/>
+            <input type="hidden" name="tourRegion" value="@Model.TourViewModel.TourRegion"/>
+        </div>
+        <div>
+            <label>Tour movement type: @Model.TourViewModel.TourMovementType</label><br/>
+            <input type="hidden" name="tourMovementType" value="@Model.TourViewModel.TourMovementType"/>
+        </div>
+        <div>
+            <label>Tour date: @Model.TourViewModel.TourDateTime</label><br/>
+            <input type="hidden" name="tourDate" value="@Model.TourViewModel.TourDateTime"/>
+        </div>
+        <div>
+            <label>Tour duration: @Model.TourViewModel.TourDurationInDays</label><br/>
+            <input type="hidden" name="duration" value="@Model.TourViewModel.TourDurationInDays"/>
+        </div>
+        @if (UserManagerService.LoggedUser != null)
+        {
+            @if (UserManagerService.LoggedUser.Role == "user")
+            {
+                <div>
+                    <br/><input type="submit" asp-page-handler="BankTour" value="Add" />
+                </div>
+            }
+        }
+    </form>
+}

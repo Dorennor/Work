@@ -24,7 +24,7 @@ namespace Work.PL.Controllers
 
         [HttpGet]
         [Route("api/getTour")]
-        public async Task<TourModel> GetTourAsync([FromBody] int id)
+        public async Task<TourModel> GetTourAsync(int id)
         {
             return await _tourService.GetTourById(id);
         }
@@ -39,7 +39,7 @@ namespace Work.PL.Controllers
 
         [HttpPost]
         [Route("api/deleteTour")]
-        public async Task DeleteTourAsync([FromBody] int id)
+        public async Task DeleteTourAsync(int id)
         {
             if(id == null) return;
             await _tourService.DeleteTourAsync(id);

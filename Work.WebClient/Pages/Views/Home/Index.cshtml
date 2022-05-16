@@ -18,40 +18,40 @@
     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
         <ul class="navbar-nav flex-grow-1">
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="name">Sort by name</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="name">Sort by name</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="type">Sort by type</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="type">Sort by type</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="region">Sort by region</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="region">Sort by region</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="movement">Sort by movement type</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="movement">Sort by movement type</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="date">Sort by date</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="date">Sort by date</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="duration">Sort by tour duration</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="duration">Sort by tour duration</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="nameDescending">Sort by name descending</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="nameDescending">Sort by name descending</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="typeDescending">Sort by type descending</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="typeDescending">Sort by type descending</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="regionDescending">Sort by region descending</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="regionDescending">Sort by region descending</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="movementDescending">Sort by movement descending</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="movementDescending">Sort by movement descending</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="dateDescending">Sort by date descending</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="dateDescending">Sort by date descending</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-info" role="button" asp-page="/Views/Home/Index" asp-route-sort="durationDescending">Sort by duration descending</a>
+                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="durationDescending">Sort by duration descending</a>
             </li>
         </ul>
     </div>
@@ -94,7 +94,7 @@
             <td>@tour.TourDateTime.ToShortDateString()</td>
             <td>@tour.TourDurationInDays @(tour.TourDurationInDays == 1 ? "day" : "days")</td>
             <td>
-                <a class="btn btn-primary" role="button" asp-page="/Views/Tour/Index" asp-route-id="@tour.Id">Information</a>
+                <a class="btn btn-primary" role="button" asp-page="/Views/Tour/TourInfo" asp-route-id="@tour.Id">Information</a>
             </td>
             @if (UserManager.LoggedUser != null)
             {

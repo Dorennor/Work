@@ -128,7 +128,7 @@ namespace Work.PL.Controllers
 
         [HttpPost]
         [Route("api/deleteUser")]
-        public async Task DeleteUserAsync([FromBody] int id)
+        public async Task DeleteUserAsync(int id)
         {
             await _userService.DeleteUserAsync(id);
         }

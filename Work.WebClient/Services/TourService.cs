@@ -65,7 +65,25 @@ public class TourService : ITourService
 
     public async Task<TourViewModel> GetTourAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            if (id != null)
+            {
+                using var httpClient = new HttpClient();
+
+                httpClient.BaseAddress = new Uri("http://localhost:60425/");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var result = await httpClient.GetFromJsonAsync<TourViewModel>($"api/getTour/?id={id}");
+
+                return result;
+            }
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+        return null;
     }
 
     public async Task<List<TourViewModel?>> GetAllToursAsync()

@@ -22,7 +22,7 @@ namespace Work.WebClient.Pages.Views.Home
             }
         }
 
-        public async Task OnGet(bool logout = false, string sort = "none")
+        public async Task OnGetAsync(bool logout = false, string sort = "none")
         {
             if (logout)
             {
@@ -90,20 +90,20 @@ namespace Work.WebClient.Pages.Views.Home
             }
         }
 
-        public async Task OnPostSearch(string search)
+        public async Task OnPostSearchAsync(string search)
         {
             Log.Information(search);
             if (Tours != null)
             {
                 if (search != "")
                 {
-                    Tours = Tours.Where(t => t.TourName.Contains(search)).ToList();
+                    Tours = Tours.Where(t => t.TourName.ToLower().Contains(search.ToLower())).ToList();
                 }
             }
             else
             {
                 Tours = await _tourService.GetAllToursAsync();
-                Tours = Tours.Where(t => t.TourName.Contains(search)).ToList();
+                Tours = Tours.Where(t => t.TourName.ToLower().Contains(search.ToLower())).ToList();
             }
         }
     }
