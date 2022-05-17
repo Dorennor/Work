@@ -16,7 +16,7 @@ namespace Work.WebClient.Pages.Views.Tour
 
         public async Task OnGetAsync(int id)
         {
-            TourViewModel = await _tourService.GetTourAsync(id);
+            TourViewModel = await _tourService.GetTourByIdAsync(id);
         }
     }
 }

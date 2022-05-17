@@ -63,7 +63,7 @@ public class TourService : ITourService
         }
     }
 
-    public async Task<TourViewModel> GetTourAsync(int id)
+    public async Task<TourViewModel> GetTourByIdAsync(int id)
     {
         try
         {

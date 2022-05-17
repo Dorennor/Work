@@ -5,6 +5,9 @@
 @{
     <form method="post">
         <div>
+            <input type="hidden" name="tourId" value="@Model.TourViewModel.Id"/>
+        </div>
+        <div>
             <label>Tour name: @Model.TourViewModel.TourName</label><br/>
             <input type="hidden" name="tourName" value="@Model.TourViewModel.TourName"/>
         </div>
@@ -21,20 +24,28 @@
             <input type="hidden" name="tourMovementType" value="@Model.TourViewModel.TourMovementType"/>
         </div>
         <div>
-            <label>Tour date: @Model.TourViewModel.TourDateTime</label><br/>
+            <label>Tour date: @Model.TourViewModel.TourDateTime.ToShortDateString()</label><br/>
             <input type="hidden" name="tourDate" value="@Model.TourViewModel.TourDateTime"/>
         </div>
         <div>
             <label>Tour duration: @Model.TourViewModel.TourDurationInDays</label><br/>
             <input type="hidden" name="duration" value="@Model.TourViewModel.TourDurationInDays"/>
         </div>
+        <div>
+            <label>Tour duration: @Model.TourViewModel.TourPrice</label><br/>
+            <input type="hidden" name="price" value="@Model.TourViewModel.TourPrice"/>
+        </div>
         @if (UserManagerService.LoggedUser != null)
         {
-            @if (UserManagerService.LoggedUser.Role == "user")
+            @if (UserManagerService.LoggedUser.Role == "User")
             {
-                <div>
-                    <br/><input type="submit" asp-page-handler="BankTour" value="Add" />
-                </div>
+                <td>
+                    <a class="btn btn-primary" role="button" asp-page="/Views/Order/OrderTour" asp-route-id="@Model.TourViewModel.Id"
+                       asp-route-name="@Model.TourViewModel.TourName" asp-route-type="@Model.TourViewModel.TourType"
+                       asp-route-region="@Model.TourViewModel.TourRegion" asp-route-movement="@Model.TourViewModel.TourMovementType"
+                       asp-route-date="@Model.TourViewModel.TourDateTime" asp-route-duration="@Model.TourViewModel.TourDurationInDays"
+                       asp-route-price="@Model.TourViewModel.TourPrice">Book</a>
+                </td>
             }
         }
     </form>

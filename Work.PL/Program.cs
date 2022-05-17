@@ -18,6 +18,11 @@ namespace Work.PL
             builder.Services.AddScoped<ITransportService, TransportService>();
             builder.Services.AddScoped<ITourService, TourService>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddTransient<ITransportService, TransportService>();
+            builder.Services.AddTransient<IHotelService, HotelService>();
+            builder.Services.AddTransient<IOrderService, OrderService>();
+            builder.Services.AddTransient<ITransportTicketService, TransportTicketService>();
+            builder.Services.AddTransient<IHotelTicketService, HotelTicketService>();
 
             var app = builder.Build();
 

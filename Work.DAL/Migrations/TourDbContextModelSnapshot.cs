@@ -79,13 +79,9 @@ namespace Work.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("Date");
-
                     b.Property<int>("HotelId")
                         .HasColumnType("int")
-                        .HasColumnName("Hotel");
+                        .HasColumnName("HotelId");
 
                     b.Property<int>("NumberOfDays")
                         .HasColumnType("int")
@@ -96,8 +92,6 @@ namespace Work.DAL.Migrations
                         .HasColumnName("SummaryPrice");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("HotelId");
 
                     b.ToTable("HotelTickets");
                 });
@@ -114,32 +108,23 @@ namespace Work.DAL.Migrations
                         .HasColumnType("float")
                         .HasColumnName("FinalPrice");
 
-                    b.Property<int?>("HotelTicketReservationId")
+                    b.Property<int>("HotelTicketId")
                         .HasColumnType("int")
-                        .HasColumnName("HotelReservationTicket");
+                        .HasColumnName("HotelTicketId");
 
                     b.Property<int>("TourId")
                         .HasColumnType("int")
-                        .HasColumnName("Tour");
+                        .HasColumnName("TourId");
 
-                    b.Property<int?>("TransportId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TransportReservationId")
+                    b.Property<int>("TransportTicketId")
                         .HasColumnType("int")
-                        .HasColumnName("TransportReservationTicket");
+                        .HasColumnName("TransportTicketId");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int")
-                        .HasColumnName("User");
+                        .HasColumnName("UserId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TourId");
-
-                    b.HasIndex("TransportId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -170,6 +155,10 @@ namespace Work.DAL.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("TourName");
 
+                    b.Property<double>("TourPrice")
+                        .HasColumnType("float")
+                        .HasColumnName("TourPrice");
+
                     b.Property<string>("TourRegion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -188,10 +177,22 @@ namespace Work.DAL.Migrations
                         new
                         {
                             Id = 1,
+                            TourDateTime = new DateTime(2022, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TourDurationInDays = 1,
+                            TourMovementType = "Walking",
+                            TourName = "Fenway Park",
+                            TourPrice = 100.0,
+                            TourRegion = "USA",
+                            TourType = "Individual Tour"
+                        },
+                        new
+                        {
+                            Id = 2,
                             TourDateTime = new DateTime(2022, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourDurationInDays = 6,
-                            TourMovementType = "Walking",
+                            TourMovementType = "Climbing",
                             TourName = "Colorado Hiking: Rocky Mountain National Park",
+                            TourPrice = 200.0,
                             TourRegion = "USA",
                             TourType = "Mountain Skiing Tour"
                         });
@@ -247,25 +248,19 @@ namespace Work.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("Date");
-
                     b.Property<int>("NumberOfUsing")
                         .HasColumnType("int")
                         .HasColumnName("NumberOfUsing");
 
                     b.Property<int>("TransportId")
                         .HasColumnType("int")
-                        .HasColumnName("Transport");
+                        .HasColumnName("TransportId");
 
                     b.Property<double>("TransportPrice")
                         .HasColumnType("float")
                         .HasColumnName("TransportPrice");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TransportId");
 
                     b.ToTable("TransportTickets");
                 });
@@ -329,61 +324,6 @@ namespace Work.DAL.Migrations
                             PasswordHash = "B1-43-61-40-4C-07-8F-FD-54-9C-03-DB-44-3C-3F-ED-E2-F3-E5-34-D7-3F-78-F7-73-01-ED-97-D4-A4-36-A9-FD-9D-B0-5E-E8-B3-25-C0-AD-36-43-8B-43-FE-C8-51-0C-20-4F-C1-C1-ED-B2-1D-09-41-C0-0E-9E-2C-1C-E2",
                             Role = "User"
                         });
-                });
-
-            modelBuilder.Entity("Work.DAL.Entities.HotelTicket", b =>
-                {
-                    b.HasOne("Work.DAL.Entities.Hotel", "Hotel")
-                        .WithMany()
-                        .HasForeignKey("HotelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Hotel");
-                });
-
-            modelBuilder.Entity("Work.DAL.Entities.Order", b =>
-                {
-                    b.HasOne("Work.DAL.Entities.Tour", "Tour")
-                        .WithMany()
-                        .HasForeignKey("TourId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Work.DAL.Entities.TransportTicket", "TransportReservationTicket")
-                        .WithMany()
-                        .HasForeignKey("TransportId");
-
-                    b.HasOne("Work.DAL.Entities.HotelTicket", "HotelReservationTicket")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Work.DAL.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HotelReservationTicket");
-
-                    b.Navigation("Tour");
-
-                    b.Navigation("TransportReservationTicket");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Work.DAL.Entities.TransportTicket", b =>
-                {
-                    b.HasOne("Work.DAL.Entities.Transport", "Transport")
-                        .WithMany()
-                        .HasForeignKey("TransportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Transport");
                 });
 #pragma warning restore 612, 618
         }

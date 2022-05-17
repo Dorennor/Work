@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Serilog;
 using Work.BLL.Interfaces;
 using Work.BLL.Models;
 
@@ -19,14 +18,14 @@ namespace Work.PL.Controllers
         [Route("api/getTours")]
         public async Task<List<TourModel>> GetAllToursAsync()
         {
-            return await _tourService.GetAllTours();
+            return await _tourService.GetAllToursAsync();
         }
 
         [HttpGet]
         [Route("api/getTour")]
         public async Task<TourModel> GetTourAsync(int id)
         {
-            return await _tourService.GetTourById(id);
+            return await _tourService.GetTourByIdAsync(id);
         }
 
         [HttpPost]
@@ -41,7 +40,7 @@ namespace Work.PL.Controllers
         [Route("api/deleteTour")]
         public async Task DeleteTourAsync(int id)
         {
-            if(id == null) return;
+            if (id == null) return;
             await _tourService.DeleteTourAsync(id);
         }
 

@@ -15,8 +15,15 @@ namespace Work.WebClient
             {
                 options.Conventions.AddPageRoute("/Views/Home/Index", "");
             });
+
             builder.Services.AddTransient<IUserManagerService, UserManagerService>();
-            builder.Services.AddTransient<ITourService, TourService>();
+            builder.Services.AddScoped<ITransportService, TransportService>();
+            builder.Services.AddScoped<ITourService, TourService>();
+            builder.Services.AddTransient<ITransportService, TransportService>();
+            builder.Services.AddTransient<IHotelService, HotelService>();
+            builder.Services.AddTransient<IOrderService, OrderService>();
+            builder.Services.AddTransient<ITransportTicketService, TransportTicketService>();
+            builder.Services.AddTransient<IHotelTicketService, HotelTicketService>();
 
             var app = builder.Build();
 

@@ -23,13 +23,34 @@ public class TransportService : ITransportService
     public async Task<TransportModel> GetTransportByIdAsync(int id)
     {
         var transport = await _unitOfWork.Transports.GetByIdAsync(id);
-        TransportModel model = _transportMapper.Map<Transport, TransportModel>(transport);
+        var transportModel = _transportMapper.Map<Transport, TransportModel>(transport);
+        return transportModel;
+    }
 
-        return model;
+    public async Task<List<TransportModel>> GetAllTransportsAsync()
+    {
+        var transports = await _unitOfWork.Transports.GetAllAsync();
+        var transportsModels = _transportMapper.Map<List<Transport>, List<TransportModel>>(transports);
+
+        return transportsModels;
     }
 
     public async Task AddTransportAsync(TransportModel transportModel)
     {
-        await _unitOfWork.Transports.CreateAsync(_transportMapper.Map<TransportModel, Transport>(transportModel));
+        var transport = _transportMapper.Map<TransportModel, Transport>(transportModel);
+        await _unitOfWork.Transports.CreateAsync(transport);
+    }
+
+    public async Task EditTransportAsync(TransportModel transportViewModel)
+    {
+        var tour = _transportMapper.Map<TransportModel, Transport>(transportViewModel);
+        await _unitOfWork.Transports.UpdateAsync(tour);
+    }
+
+    public async Task DeleteTransportAsync(int id)
+    {
+        var transportsList = await _unitOfWork.Transports.FindAsync(t => t.Id == id);
+        var transport = transportsList.First();
+        await _unitOfWork.Transports.DeleteAsync(transport);
     }
 }

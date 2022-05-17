@@ -97,7 +97,7 @@ public class UserManagerService : IUserManagerService
                     IsLogged = true
                 };
 
-                var result = await httpClient.PostAsJsonAsync("api/register", user);
+                var result = await httpClient.PostAsJsonAsync("api/addUser", user);
 
                 Log.Information($"UserManager {result.IsSuccessStatusCode}");
 
@@ -131,7 +131,7 @@ public class UserManagerService : IUserManagerService
                     IsLogged = false
                 };
 
-                var result = await httpClient.PostAsJsonAsync("api/addAdministrator", administrator);
+                var result = await httpClient.PostAsJsonAsync("api/addUser", administrator);
 
                 Log.Information($"UserManager {result.IsSuccessStatusCode}");
 
@@ -165,7 +165,7 @@ public class UserManagerService : IUserManagerService
                     IsLogged = false
                 };
 
-                var result = await httpClient.PostAsJsonAsync("api/addManager", manager);
+                var result = await httpClient.PostAsJsonAsync("api/addUser", manager);
 
                 return result.IsSuccessStatusCode;
             }

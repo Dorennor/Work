@@ -1,0 +1,32 @@
+﻿@page "{handler?}"
+@model Work.WebClient.Pages.Views.Order.DeleteModel
+@{
+    <table class="table">
+        <tr>
+            <td>Id</td>
+            <td>UserId</td>
+            <td>TourId</td>
+            <td>TransportTicketId</td>
+            <td>HotelTicketId</td>
+            <td>FinalPrice</td>
+            <td></td>
+            
+        </tr>
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.UserId</td>
+                <td>@order.TourId</td>
+                <td>@order.TransportTicketId</td>
+                <td>@order.HotelTicketId</td>
+                <td>@order.FinalPrice</td>
+                <td>
+                    <form method="post">
+                        <input class="btn btn-primary" type="submit" asp-route-id="@order.Id" asp-page-handler="DeleteOrder" value="Delete"/>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}

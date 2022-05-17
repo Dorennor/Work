@@ -9,19 +9,12 @@ public class HotelTicket
     public int Id { get; set; }
 
     [Required]
-    [Column("Date")]
-    public DateTime DateTime { get; set; }
-
-    [Required]
     [Column("NumberOfDays")]
     public int NumberOfDays { get; set; }
 
     [Required]
-    [Column("Hotel")]
+    [Column("HotelId")]
     public int HotelId { get; set; }
-
-    [ForeignKey("HotelId")]
-    public Hotel Hotel { get; set; }
 
     [Required]
     [Column("SummaryPrice")]

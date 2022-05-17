@@ -67,11 +67,23 @@ public static class SeedData
             {
                 Id = 1,
                 TourMovementType = "Walking",
+                TourName = "Fenway Park",
+                TourDateTime = new DateTime(2022, 5, 30),
+                TourDurationInDays = 1,
+                TourRegion = "USA",
+                TourType = "Individual Tour",
+                TourPrice = 100
+            },
+            new Tour
+            {
+                Id = 2,
+                TourMovementType = "Climbing",
                 TourName = "Colorado Hiking: Rocky Mountain National Park",
                 TourDateTime = new DateTime(2022, 11, 20),
                 TourDurationInDays = 6,
                 TourRegion = "USA",
-                TourType = "Mountain Skiing Tour"
+                TourType = "Mountain Skiing Tour",
+                TourPrice = 200
             }
         );
     }

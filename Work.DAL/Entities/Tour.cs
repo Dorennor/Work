@@ -31,4 +31,8 @@ public class Tour
     [Required]
     [Column("TourDurationInDays")]
     public int TourDurationInDays { get; set; }
+
+    [Required]
+    [Column("TourPrice")]
+    public double TourPrice { get; set; }
 }

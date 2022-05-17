@@ -6,119 +6,136 @@
 
 @{
     ViewData["Title"] = "WebClient";
-}
 
-<form method="post">
-    <input type="text" name="search"/>
-    <input class="btn btn-primary" type="submit" asp-page-handler="Search" value="Search"/>
-</form>
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <form method="post">
+                            <input type="text" name="search"/>
+                            <input class="btn btn-primary" type="submit" asp-page-handler="Search" value="Search"/>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="btn btn-danger border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="hot">Hot tours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="name">Sort by name</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="type">Sort by type</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="region">Sort by region</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="movement">Sort by movement type</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="date">Sort by date</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="duration">Sort by tour duration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="price">Sort by price</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="nameDescending">Sort by name descending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="typeDescending">Sort by type descending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="regionDescending">Sort by region descending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="movementDescending">Sort by movement descending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="dateDescending">Sort by date descending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="durationDescending">Sort by duration descending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="priceDescending">Sort by price descending</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    <div class="container">
-    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <ul class="navbar-nav flex-grow-1">
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="name">Sort by name</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="type">Sort by type</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="region">Sort by region</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="movement">Sort by movement type</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="date">Sort by date</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="duration">Sort by tour duration</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="nameDescending">Sort by name descending</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="typeDescending">Sort by type descending</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="regionDescending">Sort by region descending</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="movementDescending">Sort by movement descending</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="dateDescending">Sort by date descending</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-info border-dark mx-1" role="button" asp-page="/Views/Home/Index" asp-route-sort="durationDescending">Sort by duration descending</a>
-            </li>
-        </ul>
-    </div>
-    </div>
-</nav>
-
-<table class="table">
-    <tr>
-        <td>Name</td>
-        <td>Type</td>
-        <td>Region</td>
-        <td>Movement type</td>
-        <td>Tour date</td>
-        <td>Tour duration</td>
-        <td></td>
-        @if (UserManager.LoggedUser != null)
-        {
-            @if (UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "Manager")
-            {
-                <td></td>
-                <td></td>
-            }
-        }
-        @if (UserManager.LoggedUser != null)
-        {
-            @if (UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "User")
-            {
-                <td></td>
-            }
-        }
-    </tr>
-
-    @foreach (var tour in Model.Tours)
-    {
+    <table class="table">
         <tr>
-            <td>@tour.TourName</td>
-            <td>@tour.TourType</td>
-            <td>@tour.TourRegion</td>
-            <td>@tour.TourMovementType</td>
-            <td>@tour.TourDateTime.ToShortDateString()</td>
-            <td>@tour.TourDurationInDays @(tour.TourDurationInDays == 1 ? "day" : "days")</td>
-            <td>
-                <a class="btn btn-primary" role="button" asp-page="/Views/Tour/TourInfo" asp-route-id="@tour.Id">Information</a>
-            </td>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Region</td>
+            <td>Movement type</td>
+            <td>Tour date</td>
+            <td>Tour duration</td>
+            <td>Tour price</td>
+            <td></td>
             @if (UserManager.LoggedUser != null)
             {
                 @if (UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "Manager")
                 {
-                    <td>
-                        <a class="btn btn-primary" role="button" asp-page="/Views/Tour/EditTour" asp-route-id="@tour.Id">Edit</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary" role="button" asp-page="/Views/Tour/DeleteTour" asp-route-id="@tour.Id">Delete</a>
-                    </td>
+                    <td></td>
+                    <td></td>
                 }
             }
             @if (UserManager.LoggedUser != null)
             {
                 @if (UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "User")
                 {
-                    <td>
-                        <a class="btn btn-primary" role="button" asp-page="/Views/Order/Index" asp-route-id="@tour.Id">Book</a>
-                    </td>
+                    <td></td>
                 }
             }
         </tr>
-    }
-    
-</table>
 
+        @foreach (var tour in Model.Tours)
+        {
+            <tr>
+                <td>@tour.TourName</td>
+                <td>@tour.TourType</td>
+                <td>@tour.TourRegion</td>
+                <td>@tour.TourMovementType</td>
+                <td>@tour.TourDateTime.ToShortDateString()</td>
+                <td>@tour.TourDurationInDays @(tour.TourDurationInDays == 1 ? "day" : "days")</td>
+                <td>@tour.TourPrice</td>
+                <td>
+                    <a class="btn btn-primary" role="button" asp-page="/Views/Tour/TourInfo" asp-route-id="@tour.Id">Information</a>
+                </td>
+                @if (UserManager.LoggedUser != null)
+                {
+                    @if (UserManager.LoggedUser.IsLogged && UserManager.LoggedUser.Role == "Manager")
+                    {
+                        <td>
+                            <a class="btn btn-primary" role="button" asp-page="/Views/Tour/EditTour" asp-route-id="@tour.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" role="button" asp-page="/Views/Tour/DeleteTour" asp-route-id="@tour.Id">Delete</a>
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    </table>
+}

@@ -17,9 +17,9 @@ namespace Work.WebClient.Pages.Views.Tour
         {
         }
 
-        public async Task OnPostAddTourAsync(string tourName, string tourType, string tourRegion, string tourMovementType, DateTime tourDate, int duration)
+        public async Task OnPostAddTourAsync(string tourName, string tourType, string tourRegion, string tourMovementType, DateTime tourDate, int duration, double price)
         {
-            if (tourName == null || tourType == null || tourRegion == null || tourMovementType == null || tourDate == null || duration == null)
+            if (tourName == null || tourType == null || tourRegion == null || tourMovementType == null || tourDate == null || duration == null || price == null)
             {
                 Response.Redirect("/Views/Tour/AddTour");
                 return;
@@ -32,7 +32,8 @@ namespace Work.WebClient.Pages.Views.Tour
                 TourRegion = tourRegion,
                 TourMovementType = tourMovementType,
                 TourDateTime = tourDate,
-                TourDurationInDays = duration
+                TourDurationInDays = duration,
+                TourPrice = price
             });
 
             Response.Redirect("/Views/Home/Index");

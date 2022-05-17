@@ -9,30 +9,20 @@ public class Order
     public int Id { get; set; }
 
     [Required]
-    [Column("Tour")]
+    [Column("TourId")]
     public int TourId { get; set; }
 
-    [ForeignKey("TourId")]
-    public Tour Tour { get; set; }
-
     [Required]
-    [Column("User")]
+    [Column("UserId")]
     public int UserId { get; set; }
 
-    [ForeignKey("UserId")]
-    public User User { get; set; }
+    [Required]
+    [Column("HotelTicketId")]
+    public int HotelTicketId { get; set; }
 
-    [Column("HotelReservationTicket")]
-    public int? HotelTicketReservationId { get; set; }
-
-    [ForeignKey("UserId")]
-    public HotelTicket? HotelReservationTicket { get; set; }
-
-    [Column("TransportReservationTicket")]
-    public int? TransportReservationId { get; set; }
-
-    [ForeignKey("TransportId")]
-    public TransportTicket? TransportReservationTicket { get; set; }
+    [Required]
+    [Column("TransportTicketId")]
+    public int TransportTicketId { get; set; }
 
     [Required]
     [Column("FinalPrice")]

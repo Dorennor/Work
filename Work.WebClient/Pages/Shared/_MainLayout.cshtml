@@ -47,8 +47,33 @@
                             }
                             @if (UserManager.LoggedUser.Role == "Manager")
                             {
-                                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                                    <a class="btn btn-secondary" role="button" asp-page="/Views/Tour/AddTour">Add tour</a>
+                                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="accountDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Tour
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownMenuButton">
+                                        <a class="btn btn-secondary" role="button" asp-page="/Views/Tour/AddTour">Add tour</a>
+                                        <a class="btn btn-secondary" role="button" asp-page="/Views/Tour/EditTour">Edit tour</a>
+                                        <a class="btn btn-secondary" role="button" asp-page="/Views/Tour/DeleteTour">Delete tour</a>
+                                    </div>
+                                </div>
+                                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="accountDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Hotel
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownMenuButton">
+                                        <a class="btn btn-secondary" role="button" asp-page="/Views/Hotel/AddHotel">Add hotel</a>
+                                        <a class="btn btn-secondary" role="button" asp-page="/Views/Hotel/DeleteHotel">Delete hotel</a>
+                                    </div>
+                                </div>
+                                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="accountDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Transport
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownMenuButton">
+                                        <a class="btn btn-secondary" role="button" asp-page="/Views/Transport/AddTransport">Add transport</a>
+                                        <a class="btn btn-secondary" role="button" asp-page="/Views/Transport/DeleteTransport">Delete transport</a>
+                                    </div>
                                 </div>
                             }
                         }
@@ -74,6 +99,7 @@
                         @UserManager.LoggedUser.Email
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownMenuButton">
+                        <a class="dropdown-item" asp-page="/Views/Order/Delete">Cancel order</a>
                         <a class="dropdown-item" asp-page="/Views/Home/Index" asp-route-logout="true">Logout</a>
                     </div>
                 </div>

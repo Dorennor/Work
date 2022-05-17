@@ -39,6 +39,10 @@ namespace Work.WebClient.Pages.Views.Home
             {
                 switch (sort)
                 {
+                    case "hot":
+                        Tours = Tours.Where(t => (t.TourDateTime - DateTime.Now).Days < 30).OrderBy(o => o.TourDateTime).ToList();
+                        break;
+
                     case "name":
                         Tours = Tours.OrderBy(t => t.TourName).ToList();
                         break;
@@ -63,6 +67,10 @@ namespace Work.WebClient.Pages.Views.Home
                         Tours = Tours.OrderBy(t => t.TourDurationInDays).ToList();
                         break;
 
+                    case "price":
+                        Tours = Tours.OrderBy(t => t.TourPrice).ToList();
+                        break;
+
                     case "nameDescending":
                         Tours = Tours.OrderByDescending(t => t.TourName).ToList();
                         break;
@@ -85,6 +93,10 @@ namespace Work.WebClient.Pages.Views.Home
 
                     case "durationDescending":
                         Tours = Tours.OrderByDescending(t => t.TourDurationInDays).ToList();
+                        break;
+
+                    case "priceDescending":
+                        Tours = Tours.OrderByDescending(t => t.TourPrice).ToList();
                         break;
                 }
             }

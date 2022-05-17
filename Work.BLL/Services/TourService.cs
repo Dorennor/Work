@@ -20,14 +20,14 @@ public class TourService : ITourService
         _tourMapper = new Mapper(config);
     }
 
-    public async Task<TourModel> GetTourById(int id)
+    public async Task<TourModel> GetTourByIdAsync(int id)
     {
         var tour = await _unitOfWork.Tours.GetByIdAsync(id);
         var tourModel = _tourMapper.Map<Tour, TourModel>(tour);
         return tourModel;
     }
 
-    public async Task<List<TourModel>> GetAllTours()
+    public async Task<List<TourModel>> GetAllToursAsync()
     {
         var tours = await _unitOfWork.Tours.GetAllAsync();
         var toursModels = _tourMapper.Map<List<Tour>, List<TourModel>>(tours);

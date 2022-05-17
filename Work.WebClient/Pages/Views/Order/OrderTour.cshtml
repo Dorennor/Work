@@ -1,0 +1,23 @@
+﻿@page
+@model Work.WebClient.Pages.Views.Order.OrderTourModel
+@{
+    <form method="post">
+        <p><label>Select a transport for tour if you need our company to include it to tour price</label></p>
+        <select name="transportId">
+            @foreach (var transport in Model.Transports)
+            {
+                <option value="@transport.Id">@transport.Name @transport.TransportPrice $</option>
+            }
+        </select>
+        <p><input type="number" name="transportNumberOfUse"/></p>
+        <br/><p><label>Select a hotel for tour if you need our company to include it to tour price</label></p>
+        <select name="hotelId">
+            @foreach (var hotel in Model.Hotels)
+            {
+                <option value="@hotel.Id">@hotel.HotelName @hotel.HotelPrice $</option>
+            }
+        </select>
+        <p><input type="number" name="hotelDaysBook"/></p>
+        <br/><p><input class="btn btn-primary" type="submit" value="Book"/></p>
+    </form>
+}

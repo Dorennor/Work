@@ -15,4 +15,6 @@ public class TourViewModel
     public DateTime TourDateTime { get; set; }
 
     public int TourDurationInDays { get; set; }
+
+    public double TourPrice { get; set; }
 }

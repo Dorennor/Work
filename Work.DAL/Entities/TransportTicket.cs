@@ -9,19 +9,12 @@ public class TransportTicket
     public int Id { get; set; }
 
     [Required]
-    [Column("Date")]
-    public DateTime DateTime { get; set; }
-
-    [Required]
     [Column("NumberOfUsing")]
     public int NumberOfUsing { get; set; }
 
     [Required]
-    [Column("Transport")]
+    [Column("TransportId")]
     public int TransportId { get; set; }
-
-    [ForeignKey("TransportId")]
-    public Transport Transport { get; set; }
 
     [Required]
     [Column("TransportPrice")]

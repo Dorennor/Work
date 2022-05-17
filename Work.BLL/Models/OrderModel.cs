@@ -1,18 +1,16 @@
-﻿using Work.DAL.Entities;
-
-namespace Work.BLL.Models;
+﻿namespace Work.BLL.Models;
 
 public class OrderModel
 {
     public int Id { get; set; }
 
-    public TourModel Tour { get; set; }
+    public int TourId { get; set; }
 
-    public User User { get; set; }
+    public int UserId { get; set; }
 
-    public HotelTicketModel? HotelReservationTicket { get; set; }
+    public int HotelTicketId { get; set; }
 
-    public TransportTicketModel? TransportReservationTicket { get; set; }
+    public int TransportTicketId { get; set; }
 
     public double FinalPrice { get; set; }
 }

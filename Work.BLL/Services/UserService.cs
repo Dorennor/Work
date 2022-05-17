@@ -20,45 +20,6 @@ public class UserService : IUserService
         _userMapper = new Mapper(config);
     }
 
-    public async Task<bool> RegisterAsync(UserModel userModel)
-    {
-        var userList = await _unitOfWork.Users.FindAsync(u => u.Email == userModel.Email);
-
-        if (userList.Count > 0) return false;
-
-        var user = _userMapper.Map<UserModel, User>(userModel);
-
-        await _unitOfWork.Users.CreateAsync(user);
-
-        return true;
-    }
-
-    public async Task<bool> AddAdministratorAsync(UserModel userModel)
-    {
-        var userList = await _unitOfWork.Users.FindAsync(u => u.Email == userModel.Email);
-
-        if (userList.Count > 0) return false;
-
-        var user = _userMapper.Map<UserModel, User>(userModel);
-
-        await _unitOfWork.Users.CreateAsync(user);
-
-        return true;
-    }
-
-    public async Task<bool> AddManagerAsync(UserModel userModel)
-    {
-        var userList = await _unitOfWork.Users.FindAsync(u => u.Email == userModel.Email);
-
-        if (userList.Count > 0) return false;
-
-        var user = _userMapper.Map<UserModel, User>(userModel);
-
-        await _unitOfWork.Users.CreateAsync(user);
-
-        return true;
-    }
-
     public async Task<bool> AddUserAsync(UserModel userModel)
     {
         var userList = await _unitOfWork.Users.FindAsync(u => u.Email == userModel.Email);

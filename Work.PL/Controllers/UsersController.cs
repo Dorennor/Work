@@ -28,12 +28,12 @@ namespace Work.PL.Controllers
         }
 
         [HttpPost]
-        [Route("api/register")]
-        public async Task<IActionResult> RegisterAsync([FromBody] UserModel userModel)
+        [Route("api/addUser")]
+        public async Task<IActionResult> AddUserAsync([FromBody] UserModel userModel)
         {
             if (userModel == null) return BadRequest();
 
-            var result = await _userService.RegisterAsync(userModel);
+            var result = await _userService.AddUserAsync(userModel);
 
             if (result)
             {
@@ -70,60 +70,6 @@ namespace Work.PL.Controllers
             if (userModel == null) return;
 
             await _userService.LogoutAsync(userModel);
-        }
-
-        [HttpPost]
-        [Route("api/addAdministrator")]
-        public async Task<IActionResult> AddAdministratorAsync([FromBody] UserModel userModel)
-        {
-            if (userModel == null) return BadRequest();
-
-            var result = await _userService.RegisterAsync(userModel);
-
-            if (result)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpPost]
-        [Route("api/addManager")]
-        public async Task<IActionResult> AddManagerAsync([FromBody] UserModel userModel)
-        {
-            if (userModel == null) return BadRequest();
-
-            var result = await _userService.RegisterAsync(userModel);
-
-            if (result)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpPost]
-        [Route("api/addUser")]
-        public async Task<IActionResult> AddUserAsync([FromBody] UserModel userModel)
-        {
-            if (userModel == null) return BadRequest();
-
-            var result = await _userService.RegisterAsync(userModel);
-
-            if (result)
-            {
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
         }
 
         [HttpPost]
