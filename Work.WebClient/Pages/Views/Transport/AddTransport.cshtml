@@ -1,4 +1,19 @@
 ﻿@page
 @model Work.WebClient.Pages.Views.Transport.AddTransportModel
 @{
+    <h2>Add transport</h2>
+
+    <form method="post">
+        <div>
+            <label>Transport name</label><br/>
+            <input type="text" name="name"/>
+        </div>
+        <div>
+            <label>Transport price</label><br/>
+            <input type="text" name="price"/>
+        </div>
+        <div>
+            <br/><input type="submit" asp-page-handler="AddTransport" value="Add" />
+        </div>
+    </form>
 }

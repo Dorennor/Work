@@ -25,6 +25,7 @@ public class OrderService : IOrderService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
             return null;
         }
         return null;
@@ -42,6 +43,7 @@ public class OrderService : IOrderService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
             return null;
         }
     }
@@ -63,6 +65,7 @@ public class OrderService : IOrderService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
         }
     }
 
@@ -82,6 +85,7 @@ public class OrderService : IOrderService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
         }
     }
 
@@ -101,6 +105,7 @@ public class OrderService : IOrderService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
         }
     }
 }

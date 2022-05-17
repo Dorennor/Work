@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Serilog;
 using Work.DAL.Data;
 using Work.DAL.Entities;
 using Work.DAL.Interfaces;
@@ -22,9 +23,10 @@ public class TransportTicketsRepository : IRepository<TransportTicket>
             if (obj != null) return obj;
             else return null;
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            throw;
+            Log.Information(e.ToString());
+            return null;
         }
     }
 
@@ -43,9 +45,10 @@ public class TransportTicketsRepository : IRepository<TransportTicket>
                 return null;
             }
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            throw;
+            Log.Information(e.ToString());
+            return null;
         }
     }
 
@@ -62,9 +65,10 @@ public class TransportTicketsRepository : IRepository<TransportTicket>
                 return null;
             }
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            throw;
+            Log.Information(e.ToString());
+            return null;
         }
     }
 
@@ -83,9 +87,10 @@ public class TransportTicketsRepository : IRepository<TransportTicket>
                 return null;
             }
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            throw;
+            Log.Information(e.ToString());
+            return null;
         }
     }
 
@@ -99,9 +104,9 @@ public class TransportTicketsRepository : IRepository<TransportTicket>
                 if (obj != null) await _context.SaveChangesAsync();
             }
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            throw;
+            Log.Information(e.ToString());
         }
     }
 
@@ -118,9 +123,9 @@ public class TransportTicketsRepository : IRepository<TransportTicket>
                 }
             }
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            throw;
+            Log.Information(e.ToString());
         }
     }
 }

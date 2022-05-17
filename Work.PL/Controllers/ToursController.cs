@@ -38,7 +38,7 @@ namespace Work.PL.Controllers
 
         [HttpPost]
         [Route("api/deleteTour")]
-        public async Task DeleteTourAsync(int id)
+        public async Task DeleteTourAsync([FromBody] int id)
         {
             if (id == null) return;
             await _tourService.DeleteTourAsync(id);

@@ -1,4 +1,21 @@
 ﻿@page
 @model Work.WebClient.Pages.Views.Hotel.AddHotelModel
 @{
+    <form method="post">
+        <div>
+            <label>Hotel name</label><br/>
+            <input type="text" name="name"/>
+        </div>
+        <div>
+            <label>Hotel stars</label><br/>
+            <input type="text" name="stars"/>
+        </div>
+        <div>
+            <label>Hotel price</label><br/>
+            <input type="text" name="price"/>
+        </div>
+        <div>
+            <br/><input type="submit" asp-page-handler="AddHotel" value="Add" />
+        </div>
+    </form>
 }

@@ -37,7 +37,7 @@ namespace Work.PL.Controllers
 
         [HttpPost]
         [Route("api/deleteTransport")]
-        public async Task DeleteTransportAsync(int id)
+        public async Task DeleteTransportAsync([FromBody] int id)
         {
             if (id == null) return;
             await _transportService.DeleteTransportAsync(id);

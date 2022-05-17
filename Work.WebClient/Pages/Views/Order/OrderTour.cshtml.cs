@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Serilog;
 using Work.WebClient.Interfaces;
 using Work.WebClient.Models;
 
@@ -91,7 +90,6 @@ namespace Work.WebClient.Pages.Views.Order
             var transportTicketModel = _transportTicketService.GetAllTransportTicketTickets().Result;
             transportTicket.Id = transportTicketModel.Where(h => h.TransportId == TransportId && h.TransportPrice == transportTicket.TransportPrice)!.First().Id;
 
-
             var order = new OrderViewModel
             {
                 TourId = Tour.Id,
@@ -100,7 +98,7 @@ namespace Work.WebClient.Pages.Views.Order
                 HotelTicketId = hotelTicket.Id,
                 FinalPrice = tour.TourPrice + transportTicket.TransportPrice + hotelTicket.SummaryPrice
             };
-            
+
             await _orderService.AddOrderAsync(order);
 
             Response.Redirect("/Views/Home/Index");

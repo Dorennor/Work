@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using Serilog;
+using System.Net.Http.Headers;
 using Work.WebClient.Interfaces;
 using Work.WebClient.Models;
 
@@ -24,6 +25,7 @@ public class TransportTicketService : ITransportTicketService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
             return null;
         }
         return null;
@@ -41,6 +43,7 @@ public class TransportTicketService : ITransportTicketService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
             return null;
         }
     }
@@ -61,6 +64,7 @@ public class TransportTicketService : ITransportTicketService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
         }
     }
 
@@ -80,6 +84,7 @@ public class TransportTicketService : ITransportTicketService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
         }
     }
 
@@ -99,6 +104,7 @@ public class TransportTicketService : ITransportTicketService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
         }
     }
 }

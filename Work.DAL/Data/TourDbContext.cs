@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
 using Work.DAL.Entities;
 
 namespace Work.DAL.Data;
@@ -35,6 +36,12 @@ public class TourDbContext : DbContext
 
             optionsBuilder.UseSqlServer(connectionString);
         }
+
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.Console(theme: AnsiConsoleTheme.Code)
+            .WriteTo.File(AppContext.BaseDirectory + $"/logs/{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}_log.log", rollingInterval: RollingInterval.Day)
+            .CreateLogger();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -39,7 +39,7 @@ namespace Work.PL.Controllers
 
         [HttpPost]
         [Route("api/deleteOrder")]
-        public async Task DeleteOrderAsync(int id)
+        public async Task DeleteOrderAsync([FromBody] int id)
         {
             if (id == null) return;
             await _orderService.DeleteOrderAsync(id);

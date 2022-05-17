@@ -1,4 +1,27 @@
-﻿@page
+﻿@page "{handler?}"
 @model Work.WebClient.Pages.Views.Hotel.DeleteHotelModel
 @{
+    <table class="table">
+        <tr>
+            <td>Id</td>
+            <td>HotelName</td>
+            <td>HotelStars</td>
+            <td>HotelPrice</td>
+            <td></td>
+        </tr>
+        @foreach (var hotel in Model.Hotels)
+        {
+            <tr>
+                <td>@hotel.Id</td>
+                <td>@hotel.HotelName</td>
+                <td>@hotel.HotelStars</td>
+                <td>@hotel.HotelPrice</td>
+                <td>
+                    <form method="post">
+                        <input class="btn btn-primary" type="submit" asp-route-id="@hotel.Id" asp-page-handler="DeleteHotel" value="Delete"/>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
 }

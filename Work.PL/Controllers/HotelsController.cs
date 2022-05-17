@@ -37,7 +37,7 @@ namespace Work.PL.Controllers
 
         [HttpPost]
         [Route("api/deleteHotel")]
-        public async Task DeleteHotelAsync(int id)
+        public async Task DeleteHotelAsync([FromBody] int id)
         {
             if (id == null) return;
             await _hotelService.DeleteHotelAsync(id);

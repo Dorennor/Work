@@ -23,6 +23,7 @@ public class UserManagerService : IUserManagerService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
         }
     }
 
@@ -42,6 +43,7 @@ public class UserManagerService : IUserManagerService
             }
             catch (Exception e)
             {
+                Log.Information(e.ToString());
                 return null;
             }
         }
@@ -72,6 +74,7 @@ public class UserManagerService : IUserManagerService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
             return false;
         }
 
@@ -106,6 +109,7 @@ public class UserManagerService : IUserManagerService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
             return false;
         }
 
@@ -140,6 +144,7 @@ public class UserManagerService : IUserManagerService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
             return false;
         }
 
@@ -172,6 +177,7 @@ public class UserManagerService : IUserManagerService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
             return false;
         }
 
@@ -204,6 +210,7 @@ public class UserManagerService : IUserManagerService
         }
         catch (Exception e)
         {
+            Log.Information(e.ToString());
             return false;
         }
 
