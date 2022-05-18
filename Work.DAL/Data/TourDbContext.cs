@@ -32,7 +32,7 @@ public class TourDbContext : DbContext
             builder.AddJsonFile("appsettings.json");
 
             var config = builder.Build();
-            var connectionString = config.GetConnectionString("DefaultConnection");
+            var connectionString = config.GetConnectionString("LocalDbConnection");
 
             optionsBuilder.UseSqlServer(connectionString);
         }

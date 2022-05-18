@@ -16,7 +16,7 @@ public class TourDbContextFactory : IDesignTimeDbContextFactory<TourDbContext>
         builder.AddJsonFile("appsettings.json");
 
         var config = builder.Build();
-        var connectionString = config.GetConnectionString("DefaultConnection");
+        var connectionString = config.GetConnectionString("LocalDbConnection");
 
         optionsBuilder.UseSqlServer(connectionString);
         return new TourDbContext(optionsBuilder.Options);

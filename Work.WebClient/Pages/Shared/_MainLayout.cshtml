@@ -99,7 +99,10 @@
                         @UserManager.LoggedUser.Email
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownMenuButton">
-                        <a class="dropdown-item" asp-page="/Views/Order/Delete">Cancel order</a>
+                        @if (UserManager.LoggedUser.Role == "User")
+                        {
+                            <a class="dropdown-item" asp-page="/Views/Order/Delete">Cancel order</a>
+                        }
                         <a class="dropdown-item" asp-page="/Views/Home/Index" asp-route-logout="true">Logout</a>
                     </div>
                 </div>
