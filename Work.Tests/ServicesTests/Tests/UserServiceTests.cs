@@ -9,7 +9,7 @@ namespace Work.Tests.ServicesTests.Tests;
 public class UserServiceTests
 {
     [Fact]
-    public void GetAllUsersAsyncReturnHotelsList()
+    public void GetAllUsersAsyncReturnUsersList()
     {
         //Arrange
         var unitOfWorkMock = new Mock<IUnitOfWork>();
@@ -59,7 +59,7 @@ public class UserServiceTests
     {
         //Arrange
         var unitOfWorkMock = new Mock<IUnitOfWork>();
-        unitOfWorkMock.Setup(unitOfWork => unitOfWork.Users.UpdateAsync(user)).Returns(EditTestHotel(user));
+        unitOfWorkMock.Setup(unitOfWork => unitOfWork.Users.UpdateAsync(user)).Returns(EditTestUser(user));
 
         //Act
         var actual = unitOfWorkMock.Object.Users.UpdateAsync(user);
@@ -87,7 +87,7 @@ public class UserServiceTests
 
     [Theory]
     [ClassData(typeof(DeleteUserTestsData))]
-    public async Task DeleteHotelAsync(User user, Task expected)
+    public async Task DeleteUserAsync(User user, Task expected)
     {
         //Arrange
         var unitOfWorkMock = new Mock<IUnitOfWork>();
@@ -102,7 +102,7 @@ public class UserServiceTests
 
     [Theory]
     [ClassData(typeof(GetUserByIdTestsData))]
-    public async Task GetUserByIdAsyncReturnHotel(int id, User expected)
+    public async Task GetUserByIdAsyncReturnUser(int id, User expected)
     {
         //Arrange
         var unitOfWorkMock = new Mock<IUnitOfWork>();
@@ -127,7 +127,7 @@ public class UserServiceTests
         return Task.CompletedTask;
     }
 
-    private Task EditTestHotel(User user)
+    private Task EditTestUser(User user)
     {
         return Task.CompletedTask;
     }

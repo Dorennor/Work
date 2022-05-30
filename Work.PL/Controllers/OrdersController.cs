@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using Work.BLL.Interfaces;
 using Work.BLL.Models;
 
@@ -32,6 +33,7 @@ namespace Work.PL.Controllers
         public async Task AddOrderAsync([FromBody] OrderModel orderModel)
         {
             if (orderModel == null) return;
+            Log.Information($"Controller{orderModel.TransportTicketId}");
             await _orderService.AddOrderAsync(orderModel);
         }
 

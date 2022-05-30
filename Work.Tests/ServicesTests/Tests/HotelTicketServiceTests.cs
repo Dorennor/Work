@@ -9,7 +9,7 @@ namespace Work.Tests.ServicesTests.Tests;
 public class HotelTicketServiceTests
 {
     [Fact]
-    public void GetAllHotelTicketsAsyncReturnHotelsList()
+    public void GetAllHotelTicketsAsyncReturnHotelTicketsList()
     {
         //Arrange
         var unitOfWorkMock = new Mock<IUnitOfWork>();
@@ -72,7 +72,7 @@ public class HotelTicketServiceTests
 
     [Theory]
     [ClassData(typeof(GetHotelTicketByIdTestsData))]
-    public async Task GetHotelTicketByIdAsyncReturnHotel(int id, HotelTicket expected)
+    public async Task GetHotelTicketByIdAsyncReturnHotelTicket(int id, HotelTicket expected)
     {
         //Arrange
         var unitOfWorkMock = new Mock<IUnitOfWork>();
