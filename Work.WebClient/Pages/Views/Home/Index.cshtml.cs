@@ -104,7 +104,6 @@ namespace Work.WebClient.Pages.Views.Home
 
         public async Task OnPostSearchAsync(string search)
         {
-            Log.Information(search);
             if (Tours != null)
             {
                 if (search != "")

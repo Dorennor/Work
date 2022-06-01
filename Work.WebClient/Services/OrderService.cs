@@ -50,7 +50,6 @@ public class OrderService : IOrderService
 
     public async Task AddOrderAsync(OrderViewModel orderViewModel)
     {
-        Log.Information($"AddOrder{orderViewModel.Id}");
         try
         {
             if (orderViewModel != null)

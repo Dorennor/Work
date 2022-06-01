@@ -28,8 +28,6 @@ namespace Work.WebClient.Pages.Views.User.Authorization
 
             var result = await _userManager.LoginAsync(email, UserManagerService.GeneratePasswordHash(password));
 
-            Log.Information(result.ToString());
-
             if (!result)
             {
                 Response.Redirect("/Views/User/Authorization/Login");

@@ -102,8 +102,6 @@ public class UserManagerService : IUserManagerService
 
                 var result = await httpClient.PostAsJsonAsync("api/addUser", user);
 
-                Log.Information($"UserManager {result.IsSuccessStatusCode}");
-
                 return result.IsSuccessStatusCode;
             }
         }
@@ -136,8 +134,6 @@ public class UserManagerService : IUserManagerService
                 };
 
                 var result = await httpClient.PostAsJsonAsync("api/addUser", administrator);
-
-                Log.Information($"UserManager {result.IsSuccessStatusCode}");
 
                 return result.IsSuccessStatusCode;
             }
